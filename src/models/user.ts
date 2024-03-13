@@ -1,0 +1,2 @@
+//import {DBObjectClass} from 'oracledb';
+
