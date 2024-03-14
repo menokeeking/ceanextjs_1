@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Providers from './Providers'
 import Navbar from '@/components/Navbar'
+import Dashborad from '@/components/Dashborad'
+import SideNavbar from '@/components/SideNavbar'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,8 +23,19 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <Navbar />
-          {children}
+          <div className="grid grid-flow-row auto-rows-max">
+            <div className='sticky top-0'>
+              <Navbar />
+            </div>
+            <div className='grid grid-flow-col auto-cols-max h-screen'>
+              <div>
+                <SideNavbar />
+              </div>
+              <div className=''>
+                {children}
+              </div>
+            </div>
+          </div>
         </Providers>
       </body>
     </html>

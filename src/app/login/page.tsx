@@ -33,10 +33,10 @@ function Loginpage() {
 
   return (
 
-    <div>
+    <div className='w-screen'>
       
       <section className="bg-gray-100 dark:bg-gray-900">
-        <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-16">
+        <div className="flex flex-col items-center px-4 py-8 mx-auto md:h-screen lg:py-16">
           <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
             <Image src={"/assets/logo.png"} alt="logo" width={400} height={100} className='m-6'/>
           </a>

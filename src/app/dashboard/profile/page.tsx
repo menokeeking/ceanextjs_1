@@ -7,9 +7,9 @@ function ProfilePage() {
   //console.log(session, status)
   return (
 
-    <div className='mx-auto'>
+    <div className=''>
       <section className="bg-white-500 dark:bg-gray-900">
-        <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-16">
+        <div className="">
           <h1>Perfil del Usuario</h1> 
         </div>
       </section>
