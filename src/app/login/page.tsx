@@ -4,17 +4,25 @@ import Image from 'next/image';
 import { FormEvent, useState } from 'react';
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 
 function Loginpage() {
 
   const [error, setError] = useState('');
   const [hidden, setHidden] = useState(false)
   const router = useRouter()
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const onSubmit  = (formData) => {
+    console.log('!!!')
+  }
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+ 
+
+  const handleSubmitbtn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
+   
     const formData = new FormData(e.currentTarget)
+    
 
     //const res = await axios.post('http://200.56.97.5:7281/api-viaticos/Auth/login?user='+formData.get('fullname')+'&password='+formData.get('password'));
 
@@ -25,9 +33,9 @@ function Loginpage() {
     });
 
     if (res?.error) return setError(res.error as string);
-    //if (res?.ok) return router.push("/dashboard/profile");
+
     if (res?.ok) return router.push("/dashboard/principal");
-    //console.log(res);
+
 
   };
 
@@ -38,7 +46,7 @@ function Loginpage() {
       <section className="bg-gray-100 dark:bg-gray-900">
         <div className="flex flex-col items-center px-4 py-8 mx-auto md:h-screen lg:py-16">
           <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-            <Image src={"/assets/logo.png"} alt="logo" width={400} height={100} className='m-6'/>
+            <Image src={"/assets/logo.png"} priority={true} alt="logo" width={400} height={100} className='m-6'/>
           </a>
           
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -46,16 +54,17 @@ function Loginpage() {
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                Mi primer login
+                Mi Primer Login
               </h1>
-              <form className="space-y-4 md:space-y-6" action="#" onSubmit={handleSubmit}>
+              <form className="space-y-4 md:space-y-6"  onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usuario</label>
-                  <input type="text" name="fullname" id="fullname" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Capture el Usuario" required/>
+                  <input name="fullname" type="text"  id="fullname" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Capture el Usuario"/>
+                  <p></p>
                 </div>
-                <div>
+                <div> 
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                  <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+                  <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
                 </div>
                 
                 <button type="submit" className="w-full text-white bg-primary-900 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Iniciar Sesión</button>

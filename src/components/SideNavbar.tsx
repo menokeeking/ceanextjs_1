@@ -10,12 +10,12 @@ function SideNavbar() {
     return (
         session ?
         <div className="w-48 bg-gray-100 h-screen px-4 py-1">
-            <div className='my-1 mb-4 flex justify-center items-center'>
+            <div className='text-primary-900 my-2 mb-4 flex justify-center items-center text-sm font-bold'>
                 {/* <Image src={"/assets/cealogonavbar2.png"} alt="logo" width={144} height={56} /> */}
                 <h1>Menu Principal</h1>
             </div>
             <hr className=" border-gray-400"/>
-            <ul className='mt-4 text-gray-600 font-bold text-sm py-3'>
+            <ul className='mt-4 text-gray-600 font-bold text-md py-1'>
                 <li className="mb-2 rounded hover:shadow hover:bg-gray-300 py-3">
                     <a href="/">
                     <div className=" mx-4">
