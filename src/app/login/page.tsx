@@ -11,24 +11,15 @@ function Loginpage() {
   const [error, setError] = useState('');
   const [hidden, setHidden] = useState(false)
   const router = useRouter()
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit  = (formData) => {
-    console.log('!!!')
-  }
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
- 
+  //const onSubmit  = handleSubmit((data) => {
 
-  const handleSubmitbtn = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-   
-    const formData = new FormData(e.currentTarget)
-    
-
-    //const res = await axios.post('http://200.56.97.5:7281/api-viaticos/Auth/login?user='+formData.get('fullname')+'&password='+formData.get('password'));
+  const onSubmit = handleSubmit(async (data)  =>  { 
 
     const res = await signIn("credentials", {
-      email: formData.get('fullname'),
-      password: formData.get('password'),
+      email: data.fullname,
+      password: data.password,
       redirect: false,
     });
 
@@ -36,13 +27,12 @@ function Loginpage() {
 
     if (res?.ok) return router.push("/dashboard/principal");
 
+  })
 
-  };
 
   return (
 
     <div className='w-screen'>
-      
       <section className="bg-gray-100 dark:bg-gray-900">
         <div className="flex flex-col items-center px-4 py-8 mx-auto md:h-screen lg:py-16">
           <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -56,15 +46,16 @@ function Loginpage() {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Mi Primer Login
               </h1>
-              <form className="space-y-4 md:space-y-6"  onSubmit={handleSubmit(onSubmit)}>
+              <form className="space-y-4 md:space-y-6"  onSubmit={onSubmit}>
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usuario</label>
-                  <input name="fullname" type="text"  id="fullname" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Capture el Usuario"/>
-                  <p></p>
-                </div>
+                  <input {...register("fullname", {required: true})} type="text"  id="fullname" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Capture el Usuario"/>
+                  {errors.fullname && <p className='text-red-600 text-xs'>Este campo es requerido!</p>}
+                </div> 
                 <div> 
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                  <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                  <input {...register("password", {required: true})} type="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                  {errors.password && <p className='text-red-600 text-xs'>Este campo es requerido!</p>}
                 </div>
                 
                 <button type="submit" className="w-full text-white bg-primary-900 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Iniciar Sesión</button>
