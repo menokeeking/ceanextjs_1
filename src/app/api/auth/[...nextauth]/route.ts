@@ -1,9 +1,11 @@
-import NextAuth from 'next-auth'
+import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import axios, { AxiosError } from 'axios';
 
 
-const handler = NextAuth({
+//const handler = NextAuth({
+
+export const authOptions: NextAuthOptions = {
 
     providers: [
         CredentialsProvider({
@@ -14,11 +16,11 @@ const handler = NextAuth({
             },
             async authorize(credentials) {
 
-                console.log(credentials)
+                //console.log(credentials)
                 try {
 
                     const { data } = await axios.post('http://200.56.97.5:7281/api-viaticos/Auth/login?user=' + credentials?.email + '&password=' + credentials?.password);
-                    if ( data ) {
+                    if (data) {
                         //console.log(data.userData.deptoDescripcion)
                         return {
                             id: data.userData.noEmpleado,
@@ -42,8 +44,8 @@ const handler = NextAuth({
     ],
     pages: {
         signIn: "/login",
-      },
-      
+    },
+
     callbacks: {
         jwt({ account, token, user, profile, session }) {
             if (user) token.user = user;
@@ -55,6 +57,7 @@ const handler = NextAuth({
             return session
         },
     },
-})
+}
 
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST }

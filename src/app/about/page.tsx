@@ -4,7 +4,7 @@ import SideNavbar from "@/components/SideNavbar";
 
 function AboutPage() {
   return <div>
-    
+    hola puto
   </div> 
 }
 

@@ -22,7 +22,7 @@ function Navbar() {
     return (
         session ?
         
-            <nav className=' bg-primary-900 p-2 w-full'>
+            <nav className=' bg-primary-900 p-1 w-full'>
                 <div className='flex justify-between mx-auto px-8'>
                     <Link href="/dashboard/principal">
                         {/* <h1 className="font-bold text-white text-xl">Dashboard</h1> */}
@@ -105,7 +105,7 @@ function Navbar() {
                             </Transition>
                         </Menu>
                         </li>
-                        <li className='py-4 px-2  text-white'>
+                        <li className='py-4 px-4  text-white'>
                             <p className="text-xs text-gray-300">{session.user?.fullname}</p>
                             <p className="text-xs text-gray-300">{session.user?.depto}</p>
                         </li>
