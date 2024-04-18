@@ -38,10 +38,11 @@ function Principal() {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false)
   const [empleados, setempleados] = useState<TablaEmpleados>({} as TablaEmpleados);
+  
 
 
   const filteredItems = datos.filter(
-    item => item.nombre && item.nombre.toLowerCase().includes(filterText.toLowerCase()) || item.paterno && item.paterno.toLowerCase().includes(filterText.toLowerCase()),
+    item => item.nombre && item.nombre.toLowerCase().includes(filterText.toLowerCase()) || item.paterno && item.paterno.toLowerCase().includes(filterText.toLowerCase() ) || item.idEmpleado && item.idEmpleado.toString().includes(filterText.toLowerCase() ),
   );
 
 

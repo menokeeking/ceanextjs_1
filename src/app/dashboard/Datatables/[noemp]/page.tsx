@@ -1,7 +1,7 @@
 "use client"
 import axios from 'axios';
 import { useSession } from 'next-auth/react'
-import { ChangeEventHandler, useEffect, useState } from 'react';
+import { ChangeEvent, ChangeEventHandler, useEffect, useState } from 'react';
 import moment from 'moment';
 import DataTable from 'react-data-table-component';
 import { IoEye, IoPencilSharp, IoReader } from 'react-icons/io5';
@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { TablaListaViaticos } from '@/interfaces/TablaListaViaticos';
 import Modalviatico from '@/components/Modalviatico';
 import { DetalleViatico } from '@/interfaces/DetalleViatico';
+import { Ciudad} from '@/interfaces/Ciudades';
 
 const TextField = styled.input`
 height: 32px;
@@ -55,22 +56,23 @@ function Page({ params }: { params: { noemp: string, nombre: string } }) {
     const [filterText, setFilterText] = useState('');
     const [loading, setLoading] = useState(false)
     const [viaticos, setviaticos] = useState<TablaListaViaticos>({} as TablaListaViaticos)
+    const [ciudades, setciudades] = useState<Ciudad[]>( {} as Ciudad[])
     const [detviatico, setdetviatico] = useState<DetalleViatico>({ fecha: '01/01/2024', fechaRegreso: '01/01/2024', fechaSalida: '01/01/2024' } as DetalleViatico)
 
     const router = useRouter()
 
-    const cargarModal = (datam: any) => {
+    const cargarModal = async (datam: any) => {
         //consultar api
         //alert(JSON.stringify(datam)) si llega
         const getData = async () => {
             const { data } = await axios.get(`/api/viatico_detalle/${datam.ejercicio.toString()}/${datam.viatico.toString()}/${datam.oficina.toString()}`);
             //console.log(data.data)
-            alert("Lo que regresa el api del page.tsx "+JSON.stringify(data.data)) 
+            //alert("Lo que regresa el api del page.tsx "+JSON.stringify(data.data)) 
             setdetviatico(data.data)
             
 
         }
-        getData();
+        await getData();
         setShowModal(true)
     }
 
@@ -86,7 +88,21 @@ function Page({ params }: { params: { noemp: string, nombre: string } }) {
         }
         getData();
 
+        const getCiudades = async () => {
+
+            const {data} = await axios.get(`/api/ciudades`)
+            setciudades(data.data)
+            //console.log("Desde page",{data});
+           
+        }
+        getCiudades();
+     
+
+        
+
     }, [])
+
+
 
     const paginacionOpciones = {
         rowsPerPageText: "Registros por Página",
@@ -127,7 +143,7 @@ function Page({ params }: { params: { noemp: string, nombre: string } }) {
         {
             name: "Motivo",
             //selector: (row: any) => row.movito,
-            cell: (row: any) => <div style={{ fontSize: '10px' }}>{row.movito}</div>,
+            cell: (row: any) => <div style={{ fontSize: '11px' }}>{row.movito}</div>,
             sortable: true,
             wrap: true,
             maxWidth: '600px',
@@ -205,7 +221,11 @@ function Page({ params }: { params: { noemp: string, nombre: string } }) {
                 <Modalviatico
                     isVisible={showModal}
                     onClose={() => setShowModal(false)}
-                    detviatico={detviatico} />
+                    detviatico={detviatico}
+                    ciudades={ciudades} 
+                    handleChangeCiudad={function (e: ChangeEvent<HTMLSelectElement>): void {
+                        throw new Error('Function not implemented.');
+                    } }                    />
             </div>
             <div className='m-4 w-auto'>
 

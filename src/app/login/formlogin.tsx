@@ -12,6 +12,7 @@ interface Props {
 }
 
 export const FormLogin = ({ titulo }: Props) => {
+
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const router = useRouter()
@@ -21,7 +22,7 @@ export const FormLogin = ({ titulo }: Props) => {
 
 
     const onSubmit = handleSubmit(async (data) => {
-
+        
         setError('');
         setLoading(true);
         const res = await signIn("credentials", {
@@ -69,7 +70,7 @@ export const FormLogin = ({ titulo }: Props) => {
                     
                     //<div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                     <div className="w-full items-center">
-                        <Alert message="El Usuario o Contraseña son incorrectos" timeout={3000} />
+                        <Alert message="El Usuario o Contraseña son incorrectos" timeout={2000} />
                     </div>
                 }
 

@@ -1,29 +1,78 @@
 "use client"
 import { XCircleIcon } from '@heroicons/react/20/solid'
-import { TablaListaViaticos } from '@/interfaces/TablaListaViaticos';
-import MyDatePicker from '@/components/DatePicker';
-import React, { useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { DetalleViatico } from '@/interfaces/DetalleViatico';
-import axios from 'axios';
-
+import { Controller, useForm } from "react-hook-form";
+import { DatePickerField } from '@/components/Datepicker2';
+import { Ciudad } from '@/interfaces/Ciudades';
+import calcularDiferenciaFechas from '@/funciones/difdias';
 
 interface Props {
     isVisible: boolean;
     onClose: () => void;
     detviatico: DetalleViatico;
+    ciudades: Ciudad[];
+    handleChangeCiudad(e: ChangeEvent<HTMLSelectElement>): void
 }
 
-const Modalviatico = ({ isVisible, onClose, detviatico }: Props) => {
-
-    alert("Modal visible: "+isVisible)
+const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, handleChangeCiudad }: Props) => {
 
     if (!isVisible) return null;
 
+    const [valordias, setvalordias] = useState(1);
+    //alert(valordias)
+    const [selCdOrigen, setselCdOrigen] = useState(detviatico.origen)
+    const [selCdDestino, setselCdDestino] = useState(detviatico.destino)
+    const [valorFsal, setvalorFsal] = useState(new Date(detviatico.fechaSalida));
+    const [valorFreg, setvalorFreg] = useState(new Date(detviatico.fechaRegreso));
+    const { register, handleSubmit, formState: { errors }, control, setValue } = useForm()
+   
+    const onSubmit = handleSubmit(async (data) => {
+        //alert(JSON.stringify(selCdDestino))
+        console.log("Mostrar Valores del react-hook-form", data)
+        // setError('');
+        // setLoading(true);
+        // const res = await signIn("credentials", {
+        //     email: data.fullname,
+        //     password: data.password,
+        //     redirect: false,
+        // });
+        //console.log(JSON.stringify(data))
+        //console.log(JSON.stringify(detviatico))
+        // console.log(res)
+        // setLoading(false);
+        // if (res?.error) setError(res.error as string);
+        // if (res?.ok) router.push("/dashboard/principal");
+
+    })
+
+    function handleChange(e: ChangeEvent<HTMLSelectElement>): void {
+        //handleChangeCiudad(event)
+        setselCdOrigen(+(e.target.value))
+    }
+
+    function handleChange2(e: ChangeEvent<HTMLSelectElement>): void {
+        //handleChangeCiudad(event)
+        setselCdDestino(+(e.target.value))
+    }
+
+    const  manejarCambio =  (date: Date, name: string) => {
+        // Aquí puedes agregar más lógica si es necesario
+        alert("Antes del cambio: "+ valordias)
+        if (name == "fechaSalida") {
+            setvalordias(calcularDiferenciaFechas(valorFreg,date))
+        } else {
+           setvalordias( calcularDiferenciaFechas(date,valorFsal))
+        }
+        alert(calcularDiferenciaFechas(date,valorFsal))
+        setValue("diasmrr",valordias)
+        alert("Despues del cambio: "+ valordias)
+      };
+      
+
     return (
-        
+
         <>
-            {/* //{alert(JSON.stringify(detviatico))} */}
-            {alert("Inicio del return del Modal"+JSON.stringify(detviatico))}
             <div className="py-20 justify-center items-center bg-black bg-opacity-25 backdrop-blur-sm overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div className="relative w-screen my-6 mx-auto max-w-2xl">
                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-100 outline outline-1 outline-gray-300 focus:outline-none">
@@ -41,53 +90,114 @@ const Modalviatico = ({ isVisible, onClose, detviatico }: Props) => {
                             </button>
                         </div>
                         <div className="relative p-1 flex-auto">
-                            <form className="bg-white rounded px-4 pt-4 pb-4  w-full">
+                            <form className="bg-white rounded px-4 pt-4 pb-4  w-full" onSubmit={onSubmit}>
 
                                 <div className="grid grid-cols-2 gap-2">
                                     <div className='p-3'>
-                                        <div className='flex justify-center'>
+                                        <div className='flex justify-start'>
                                             <label className="block p-2 text-sm text-gray-500 dark:text-white"> Fecha </label>
-                                            <MyDatePicker fecha={detviatico.fecha} />
+                                            <label className="block p-2 text-sm text-gray-500 dark:text-white">
+                                                {/* <MyDatePicker fecha={detviatico.fecha} selectedDate={selectedDate} onChangeSelectedDate={onChangeSelectedDateHandler }  />  */}
+                                                {/* {selectedDate?.toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })} </label> */}
+                                                {new Date(detviatico.fecha)?.toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })} </label>
                                         </div>
                                     </div>
-                                    <div className='flex justify-center'>
+                                    <div className='grid justify-center'>
                                         <p className="text-2xl text-primary-900">Viático<strong className="font-bold"> {detviatico.noViatico} </strong></p>
+                                        <p className="flex justify-end text-md text-primary-900">Importe: ${detviatico.importe}</p>
                                     </div>
+
 
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
                                     <div className='p-3'>
                                         <div className='px-2 py-4'>
-                                            <label className="block text-sm text-gray-500 dark:text-white"> Origen </label>
-                                            <input
-                                                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600
-                                            focus:border-primary-600 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                defaultValue={detviatico.origenNom} />
-                                        </div>
-                                        <div className='px-2'>
-                                            <label className="block text-sm text-gray-500 dark:text-white"> Destino </label>
-                                            <input
-                                                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600
-                                            focus:border-primary-600 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                defaultValue={detviatico.destinoNom} />
-                                        </div>
+                                            <label htmlFor="ciudades" className="block text-sm text-gray-500 dark:text-white">
+                                                Origen
+                                            </label>
+                                            <Controller
+                                                control={control}
+                                                name="ciudades"
+                                                defaultValue={selCdOrigen}
+                                                render={({ field: { onChange, value } }) => (
+                                                    <select
+                                                        onChange={ (e) => onChange(+(e.target.value))}
+                                                        id="ciudades"
+                                                        value={value}
+                                                        className="  bg-gray-50 border border-gray-300 text-gray-900
+                                                                    sm:text-xs rounded-lg focus:ring-gray-500 focus:border-gray-500 
+                                                                    block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 
+                                                                dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500
+                                                                dark:focus:border-gray-500"
+                                                    >
+                                                        {ciudades.map((r) => (
+                                                            <option value={r.idCiudad} key={r.idCiudad}>
+                                                                {r.idCiudad} - {r.ciudad}
+                                                            </option>
+                                                        ))}
 
+                                                    </select>
+                                                )}  
+                                                />
+                                        </div>
+                                        <div className='px-2 py-4'>
+                                            <label htmlFor="ciudades2" className="block text-sm text-gray-500 dark:text-white">
+                                                Destino
+                                            </label>
+                                            <Controller
+                                                control={control}
+                                                name="ciudades2"
+                                                defaultValue={selCdDestino}
+                                                render={({ field: { onChange, value } }) => (
+                                                    <select
+                                                        onChange={ (e) => onChange(+(e.target.value))}
+                                                        id="ciudades2"
+                                                        value={value}
+                                                        className="  bg-gray-50 border border-gray-300 text-gray-900
+                                                                    sm:text-xs rounded-lg focus:ring-gray-500 focus:border-gray-500 
+                                                                    block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 
+                                                                dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500
+                                                                dark:focus:border-gray-500"
+                                                    >
+                                                        {ciudades.map((r) => (
+                                                            <option value={r.idCiudad} key={r.idCiudad}>
+                                                                {r.idCiudad} - {r.ciudad}
+                                                            </option>
+                                                        ))}
+
+                                                    </select>
+                                                )}  
+                                                />
+                                        </div>
+                                            
                                     </div>
                                     <div className='flex p-3'>
 
                                         <div className='px-1 py-4'>
                                             <label className="block text-sm text-gray-500 dark:text-white"> Salida </label>
-                                            <MyDatePicker fecha={detviatico.fechaSalida} />
+                                            <DatePickerField control={control} name='fechaSalida' date={valorFsal} manejarCambio={manejarCambio} />
                                         </div>
                                         <div className='px-1 py-4'>
                                             <label className="block text-sm text-gray-500 dark:text-white"> Regreso </label>
-                                            <MyDatePicker fecha={detviatico.fechaRegreso} />
+                                            <DatePickerField control={control} name='fechaRegreso' date={valorFreg} manejarCambio={manejarCambio}/>
                                         </div>
-                                        <div className='py-4 px-2 items-center'>
-                                            <label className="block text-center text-sm text-gray-500 dark:text-white"> Días  </label>
-                                            <p className="block text-center text-sm  text-gray-500 dark:text-white">{detviatico.dias}</p>
+                                        <div className='form-control py-4 px-2 items-center'>
+                                            <label htmlFor="diasmrr" className="block text-center text-sm text-gray-500 dark:text-white"> Días  </label>
+                                            <input 
+                                                type="number"
+                                                value={valordias}
+                                                defaultValue={9}
+                                                {...register("diasmrr",{ 
+                                                    valueAsNumber: true,
+                                                    //value: {valordias},
+                                                    //value: 3,
+                                                    //disabled: true,
+                                                })}
+                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-center sm:text-sm rounded-lg focus:ring-primary-600
+                                                            focus:border-primary-600 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                                                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                readOnly />
+                                            
                                         </div>
 
                                     </div>
@@ -97,41 +207,39 @@ const Modalviatico = ({ isVisible, onClose, detviatico }: Props) => {
                                     <div className='w-full'>
                                         <div className='px-2 py-4'>
                                             <label className="block text-sm text-gray-500 dark:text-white"> Titulo de la Comisión </label>
-                                            <input
+                                            <input {...register("comisiontitulo", { required: true })}
                                                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600
-                                            focus:border-primary-600 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                            focus:border-primary-600 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                                                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 defaultValue={detviatico.comisionTitulo} />
+                                            {errors.comisiontitulo && <p className='text-red-600 text-xs'>Este campo es requerido!</p>}
                                         </div>
                                         <div className='px-2 py-4'>
                                             <label className="block text-sm text-gray-500 dark:text-white"> Actividades </label>
-                                            <textarea className="resize-none bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600
+                                            <textarea {...register("comisionDetalle", { required: true })} className="resize-none bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600
                                             focus:border-primary-600 block p-2 w-full h-28 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            >{detviatico.comisionDetalle}</textarea>
+                                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" defaultValue={detviatico.comisionDetalle}
+                                            ></textarea>
+                                            {errors.comisionDetalle && <p className='text-red-600 text-xs'>Este campo es requerido!</p>}
                                         </div>
 
                                     </div>
 
                                 </div>
+                                <div className="flex items-center justify-end px-4 py-2 border-t border-solid border-blueGray-200 rounded-b">
+                                    <button className="text-gray-500 background-transparent rounded shadow uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 "
+                                        type="button"
+                                        onClick={onClose}>
+                                        Cerrar
+                                    </button>
+                                    <button type="submit"
+                                        className="text-white bg-primary-900 active:bg-primary-950 uppercase text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1">
+                                        Actualizar
+                                    </button>
+                                </div>
                             </form>
                         </div>
-                        <div className="flex items-center justify-end px-4 py-2 border-t border-solid border-blueGray-200 rounded-b">
-                            <button
-                                className="text-gray-500 background-transparent font-bold uppercase px-6 text-sm outline-none focus:outline-none mr-1 mb-1 "
-                                type="button"
-                                onClick={onClose}
-                            >
-                                <div className='hover:text-bold'>Cerrar</div>
-                            </button>
-                            <button
-                                className="text-white bg-primary-900 active:bg-primary-950 font-bold uppercase text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                                type="button"
-                                onClick={() => { }}
-                            >
-                                Actualizar
-                            </button>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -142,3 +250,4 @@ const Modalviatico = ({ isVisible, onClose, detviatico }: Props) => {
 };
 
 export default Modalviatico
+

@@ -14,5 +14,6 @@ export interface DetalleViatico {
     fechaSalida: string, 
     fechaRegreso: string, 
     dias: number, 
-    estatus: number
+    estatus: number,
+    importe: number
 }
