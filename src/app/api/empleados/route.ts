@@ -5,6 +5,7 @@ export async function GET() {
     try {
         const { data } = await axios.get(
           'http://200.56.97.5:7281/api-viaticos/Empleados'
+          //'http://localhost:5151/empleados'
         );
 
       //console.log(data)

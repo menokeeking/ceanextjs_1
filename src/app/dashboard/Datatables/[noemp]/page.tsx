@@ -14,7 +14,8 @@ import { useRouter } from 'next/navigation';
 import { TablaListaViaticos } from '@/interfaces/TablaListaViaticos';
 import Modalviatico from '@/components/Modalviatico';
 import { DetalleViatico } from '@/interfaces/DetalleViatico';
-import { Ciudad} from '@/interfaces/Ciudades';
+import { TablaViaticos } from '@/interfaces/TablaViaticos';
+import { Ciudad } from '@/interfaces/Ciudades';
 
 const TextField = styled.input`
 height: 32px;
@@ -48,32 +49,39 @@ cursor: pointer;`;
 
 function Page({ params }: { params: { noemp: string, nombre: string } }) {
 
-
-
-
     const [showModal, setShowModal] = useState(false);
     const [datos, setDatos] = useState([] as TablaListaViaticos[])
     const [filterText, setFilterText] = useState('');
     const [loading, setLoading] = useState(false)
     const [viaticos, setviaticos] = useState<TablaListaViaticos>({} as TablaListaViaticos)
-    const [ciudades, setciudades] = useState<Ciudad[]>( {} as Ciudad[])
+    //const [valorviatico, setvalorviatico] = useState<TablaViaticos>({} as TablaViaticos)
+    const [ciudades, setciudades] = useState<Ciudad[]>({} as Ciudad[])
     const [detviatico, setdetviatico] = useState<DetalleViatico>({ fecha: '01/01/2024', fechaRegreso: '01/01/2024', fechaSalida: '01/01/2024' } as DetalleViatico)
 
     const router = useRouter()
 
     const cargarModal = async (datam: any) => {
         //consultar api
-        //alert(JSON.stringify(datam)) si llega
+        //alert(JSON.stringify(datam))
         const getData = async () => {
             const { data } = await axios.get(`/api/viatico_detalle/${datam.ejercicio.toString()}/${datam.viatico.toString()}/${datam.oficina.toString()}`);
-            //console.log(data.data)
+            console.log(data.data)
             //alert("Lo que regresa el api del page.tsx "+JSON.stringify(data.data)) 
             setdetviatico(data.data)
-            
-
+            console.log(detviatico)
         }
         await getData();
         setShowModal(true)
+    }
+
+    //const modificaModal = async (valorviatico: TablaViaticos) => {
+    const modificaModal = async (valorviatico: TablaViaticos) => {
+
+        console.log(valorviatico)
+        //setShowModal(false)
+
+
+
     }
 
     useEffect(() => {
@@ -90,15 +98,15 @@ function Page({ params }: { params: { noemp: string, nombre: string } }) {
 
         const getCiudades = async () => {
 
-            const {data} = await axios.get(`/api/ciudades`)
+            const { data } = await axios.get(`/api/ciudades`)
             setciudades(data.data)
             //console.log("Desde page",{data});
-           
+
         }
         getCiudades();
-     
 
-        
+
+
 
     }, [])
 
@@ -192,7 +200,7 @@ function Page({ params }: { params: { noemp: string, nombre: string } }) {
                         onClick={() => {
                             //alert(JSON.stringify(row))
                             cargarModal(row)
-                            
+
                             //setviaticos(row)
                         }}
                     >
@@ -222,10 +230,9 @@ function Page({ params }: { params: { noemp: string, nombre: string } }) {
                     isVisible={showModal}
                     onClose={() => setShowModal(false)}
                     detviatico={detviatico}
-                    ciudades={ciudades} 
-                    handleChangeCiudad={function (e: ChangeEvent<HTMLSelectElement>): void {
-                        throw new Error('Function not implemented.');
-                    } }                    />
+                    ciudades={ciudades}
+                    modificaModal={modificaModal}
+                />
             </div>
             <div className='m-4 w-auto'>
 

@@ -53,7 +53,7 @@ function Principal() {
       const { data } = await axios.get('/api/empleados');
       setLoading(false)
       setDatos(data.data)
-      //console.log({data});
+      console.log(data.data);
 
     }
     getData();
@@ -119,7 +119,7 @@ function Principal() {
       selector: (row: any) => row.id,
       cell: (row: any) =>
         <>
-          <button
+          <button title='Detalle Empleado'
             type="button"
             onClick={() => {
               setShowModal(true)
@@ -129,13 +129,13 @@ function Principal() {
             <IoEye className="w-5 h-5 text-red-900" />
           </button>
 
-          <button
+          <button title='Editar'
             type="button"
           >
             <IoPencilSharp className="ml-2 w-5 h-5 text-red-900" />
           </button>
 
-          <button
+          <button title='Detalle Viaticos'
             type="button"
             //onClick={()=> router.push(`/dashboard/Datatables/${row.idEmpleado}`)}
             onClick={() => router.push(`/dashboard/Datatables/${row.idEmpleado}`)}

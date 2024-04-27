@@ -2,47 +2,68 @@
 import { XCircleIcon } from '@heroicons/react/20/solid'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { DetalleViatico } from '@/interfaces/DetalleViatico';
-import { Controller, useForm } from "react-hook-form";
+import { TablaViaticos } from '@/interfaces/TablaViaticos';
+import { Controller, FieldValue, FieldValues, useForm } from "react-hook-form";
 import { DatePickerField } from '@/components/Datepicker2';
 import { Ciudad } from '@/interfaces/Ciudades';
 import calcularDiferenciaFechas from '@/funciones/difdias';
+import obtenerfecha from '@/funciones/diadehoy';
+
+
 
 interface Props {
     isVisible: boolean;
     onClose: () => void;
     detviatico: DetalleViatico;
     ciudades: Ciudad[];
-    handleChangeCiudad(e: ChangeEvent<HTMLSelectElement>): void
+    //handleChangeCiudad(e: ChangeEvent<HTMLSelectElement>): void
+    modificaModal(tablaviaticos: TablaViaticos): void;
 }
 
-const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, handleChangeCiudad }: Props) => {
+
+const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal }: Props) => {
 
     if (!isVisible) return null;
 
-    const [valordias, setvalordias] = useState(1);
-    //alert(valordias)
+
+    const [valordias, setvalordias] = useState(detviatico.dias);
     const [selCdOrigen, setselCdOrigen] = useState(detviatico.origen)
     const [selCdDestino, setselCdDestino] = useState(detviatico.destino)
     const [valorFsal, setvalorFsal] = useState(new Date(detviatico.fechaSalida));
     const [valorFreg, setvalorFreg] = useState(new Date(detviatico.fechaRegreso));
     const { register, handleSubmit, formState: { errors }, control, setValue } = useForm()
-   
-    const onSubmit = handleSubmit(async (data) => {
-        //alert(JSON.stringify(selCdDestino))
-        console.log("Mostrar Valores del react-hook-form", data)
-        // setError('');
-        // setLoading(true);
-        // const res = await signIn("credentials", {
-        //     email: data.fullname,
-        //     password: data.password,
-        //     redirect: false,
-        // });
-        //console.log(JSON.stringify(data))
-        //console.log(JSON.stringify(detviatico))
-        // console.log(res)
-        // setLoading(false);
-        // if (res?.error) setError(res.error as string);
-        // if (res?.ok) router.push("/dashboard/principal");
+
+    // const onSubmit = handleSubmit ( ({ diasmrr,comisiontitulo,comisionDetalle,ciudades,ciudades2,fechaSalida,fechaRegreso }) => {
+    const onSubmit = handleSubmit ( (data) => {
+
+        const viatico = {
+            oficina: +(detviatico.noViatico.substring(2, 1)),
+            ejercicio: +(20+detviatico.noViatico.substring(detviatico.noViatico.search('/')+1,detviatico.noViatico.length)),
+            noViat: +(detviatico.noViatico.substring(3, detviatico.noViatico.search('/'))),
+            fecha: valorFsal.toString(),
+            noEmp: 7120,
+            origenId: data.ciudades,
+            destinoId: data.ciudades2,
+            motivo: data.comisiontitulo,
+            fechaSal: data.fechaSalida,
+            fechaReg: data.fechaRegreso,
+            dias: data.diasmrr,
+            inforFecha: '',
+            inforAct: data.comisionDetalle,
+            nota: 'web',
+            estatus: 1,
+            fechaMod: obtenerfecha(),
+            pol: 0,
+            polMes: 0,
+            caja: 0,
+            cajaVale: 0,
+            cajaRepo: 0,
+            noEmpCrea: 0,
+            inforResul: ''
+        } as TablaViaticos
+
+        //console.log("Desde modal al presionar actualizar"+ JSON.stringify(viatico))
+        modificaModal(viatico)
 
     })
 
@@ -56,19 +77,18 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, handleChangeCi
         setselCdDestino(+(e.target.value))
     }
 
-    const  manejarCambio =  (date: Date, name: string) => {
+    const manejarCambio = (date: Date, name: string) => {
         // Aquí puedes agregar más lógica si es necesario
-        alert("Antes del cambio: "+ valordias)
+
         if (name == "fechaSalida") {
-            setvalordias(calcularDiferenciaFechas(valorFreg,date))
+            setvalordias(calcularDiferenciaFechas(valorFreg, date))
         } else {
-           setvalordias( calcularDiferenciaFechas(date,valorFsal))
+            setvalordias(calcularDiferenciaFechas(date, valorFsal))
         }
-        alert(calcularDiferenciaFechas(date,valorFsal))
-        setValue("diasmrr",valordias)
-        alert("Despues del cambio: "+ valordias)
-      };
-      
+
+        setValue("diasmrr", calcularDiferenciaFechas(date, valorFsal))
+
+    };
 
     return (
 
@@ -121,7 +141,7 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, handleChangeCi
                                                 defaultValue={selCdOrigen}
                                                 render={({ field: { onChange, value } }) => (
                                                     <select
-                                                        onChange={ (e) => onChange(+(e.target.value))}
+                                                        onChange={(e) => onChange(+(e.target.value))}
                                                         id="ciudades"
                                                         value={value}
                                                         className="  bg-gray-50 border border-gray-300 text-gray-900
@@ -137,8 +157,8 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, handleChangeCi
                                                         ))}
 
                                                     </select>
-                                                )}  
-                                                />
+                                                )}
+                                            />
                                         </div>
                                         <div className='px-2 py-4'>
                                             <label htmlFor="ciudades2" className="block text-sm text-gray-500 dark:text-white">
@@ -150,7 +170,7 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, handleChangeCi
                                                 defaultValue={selCdDestino}
                                                 render={({ field: { onChange, value } }) => (
                                                     <select
-                                                        onChange={ (e) => onChange(+(e.target.value))}
+                                                        onChange={(e) => onChange(+(e.target.value))}
                                                         id="ciudades2"
                                                         value={value}
                                                         className="  bg-gray-50 border border-gray-300 text-gray-900
@@ -166,10 +186,10 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, handleChangeCi
                                                         ))}
 
                                                     </select>
-                                                )}  
-                                                />
+                                                )}
+                                            />
                                         </div>
-                                            
+
                                     </div>
                                     <div className='flex p-3'>
 
@@ -179,25 +199,22 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, handleChangeCi
                                         </div>
                                         <div className='px-1 py-4'>
                                             <label className="block text-sm text-gray-500 dark:text-white"> Regreso </label>
-                                            <DatePickerField control={control} name='fechaRegreso' date={valorFreg} manejarCambio={manejarCambio}/>
+                                            <DatePickerField control={control} name='fechaRegreso' date={valorFreg} manejarCambio={manejarCambio} />
                                         </div>
                                         <div className='form-control py-4 px-2 items-center'>
                                             <label htmlFor="diasmrr" className="block text-center text-sm text-gray-500 dark:text-white"> Días  </label>
-                                            <input 
+                                            <input
                                                 type="number"
                                                 value={valordias}
                                                 defaultValue={9}
-                                                {...register("diasmrr",{ 
+                                                {...register("diasmrr", {
                                                     valueAsNumber: true,
-                                                    //value: {valordias},
-                                                    //value: 3,
-                                                    //disabled: true,
                                                 })}
                                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-center sm:text-sm rounded-lg focus:ring-primary-600
                                                             focus:border-primary-600 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                                                             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 readOnly />
-                                            
+
                                         </div>
 
                                     </div>
