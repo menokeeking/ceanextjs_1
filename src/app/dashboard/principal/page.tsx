@@ -10,7 +10,8 @@ import { XCircleIcon } from '@heroicons/react/20/solid'
 import Modaltest from '@/components/Modaltest';
 import { Progress } from '@/components/Progress';
 import { useRouter } from 'next/navigation';
-
+import ModalSetejercicio from '@/components/ModalSetejercicio';
+import { useCounterStore } from '@/store/counterStore';
 
 const TextField = styled.input`
 height: 32px;
@@ -28,39 +29,39 @@ padding: 0 32px 0 16px;
 }
 `;
 
-
 function Principal() {
 
   const router = useRouter()
 
+  const inicio = useCounterStore((state) => state.alinicio)
   const [datos, setDatos] = useState([] as TablaEmpleados[])
   const [filterText, setFilterText] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false)
   const [empleados, setempleados] = useState<TablaEmpleados>({} as TablaEmpleados);
-  
 
+  const [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => { setIsOpen(false) };
+  const openModal = () => { setIsOpen(true) };
 
   const filteredItems = datos.filter(
-    item => item.nombre && item.nombre.toLowerCase().includes(filterText.toLowerCase()) || item.paterno && item.paterno.toLowerCase().includes(filterText.toLowerCase() ) || item.idEmpleado && item.idEmpleado.toString().includes(filterText.toLowerCase() ),
+    item => item.nombre && item.nombre.toLowerCase().includes(filterText.toLowerCase()) || item.paterno && item.paterno.toLowerCase().includes(filterText.toLowerCase()) || item.idEmpleado && item.idEmpleado.toString().includes(filterText.toLowerCase()),
   );
 
 
   useEffect(() => {
+    
+    if (inicio) setIsOpen(true)
     setLoading(true)
     setDatos([]);
     const getData = async () => {
       const { data } = await axios.get('/api/empleados');
       setLoading(false)
       setDatos(data.data)
-      console.log(data.data);
-
     }
     getData();
-
+    console.log(inicio)
   }, [])
-
-
 
 
   const paginacionOpciones = {
@@ -148,10 +149,15 @@ function Principal() {
   ]
 
 
-  //console.log(session, status)
   return (
     <>
 
+      <div className="">
+        {/* <button onClick={openModal}>Abrir Modal, valor: {inicio.toString()}</button> */}
+        <p>Variable Global {inicio.toString()}</p>
+        {/* <ModalSetejercicio isVisible={isOpen} CerrarModal={closeModal} /> */}
+        <ModalSetejercicio isVisible={isOpen} CerrarModal={closeModal} />
+      </div>
       <div className="">
         {/* <Modaltest showModal={showModal} /> */}
         <Modaltest isVisible={showModal} onClose={() => setShowModal(false)} empleados={empleados} />
@@ -180,7 +186,7 @@ function Principal() {
             <XCircleIcon
               className=" h-6 w-6 text-gray-100 bg-primary-800 border-top-left-radius: 0 border-bottom-left-radius: 0 border-top-right-radius: 5px border-bottom-right-radius: 5px cursor-pointer"
               aria-hidden="true"
-              onClick={() => setFilterText('')} 
+              onClick={() => setFilterText('')}
             />
           </>}
           dense={true}
@@ -191,10 +197,9 @@ function Principal() {
           noDataComponent={<p className='py-6 text-md text-gray-600'>Sin información</p>}
           highlightOnHover
           persistTableHead
-
-
         />
       </div>
+
 
     </>
   )

@@ -1,17 +1,19 @@
-import { NextResponse } from "next/server";
 import axios, { AxiosError } from 'axios';
+import {NextResponse} from 'next/server';
 
 interface Segments {
     params: {
-        emp: number;
+        ejercicio: number;
+        empleado: number;
     };
 }
+
 
 export async function GET(request: Request, { params }: Segments) {
     try {
 
         const { data } = await axios.get(
-            `http://200.56.97.5:7281/api-viaticos/Viaticos/lista-viaticos-empleado/2024/${params.emp}`
+            `http://200.56.97.5:7281/api-viaticos/Viaticos/lista-viaticos-empleado/${params.ejercicio}/${params.empleado}`
         );
         //console.log(data)    
         return NextResponse.json({
@@ -24,4 +26,6 @@ export async function GET(request: Request, { params }: Segments) {
             data: error,
         });
     }
+
+
 }

@@ -1,10 +1,10 @@
 'use client'
-
 import { useState } from 'react';
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import Alert from '@/app/login/Alert';
+import { useCounterStore } from '@/store/counterStore';
 
 
 interface Props {
@@ -18,7 +18,7 @@ export const FormLogin = ({ titulo }: Props) => {
     const router = useRouter()
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-
+    const esinicio = useCounterStore(state => state.esinicio)
 
 
     const onSubmit = handleSubmit(async (data) => {
@@ -34,7 +34,10 @@ export const FormLogin = ({ titulo }: Props) => {
         console.log(res)
         setLoading(false);
         if (res?.error) setError(res.error as string);
-        if (res?.ok) router.push("/dashboard/principal");
+        if (res?.ok) {
+            esinicio()
+            router.push("/dashboard/principal");
+        }
 
     })
 

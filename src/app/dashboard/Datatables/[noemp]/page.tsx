@@ -16,6 +16,7 @@ import Modalviatico from '@/components/Modalviatico';
 import { DetalleViatico } from '@/interfaces/DetalleViatico';
 import { TablaViaticos } from '@/interfaces/TablaViaticos';
 import { Ciudad } from '@/interfaces/Ciudades';
+import { useCounterStore } from '@/store/counterStore';
 
 const TextField = styled.input`
 height: 32px;
@@ -49,6 +50,7 @@ cursor: pointer;`;
 
 function Page({ params }: { params: { noemp: string, nombre: string } }) {
 
+    const count = useCounterStore((state) => state.count)
     const [showModal, setShowModal] = useState(false);
     const [datos, setDatos] = useState([] as TablaListaViaticos[])
     const [filterText, setFilterText] = useState('');
@@ -88,7 +90,8 @@ function Page({ params }: { params: { noemp: string, nombre: string } }) {
         setLoading(true)
         setDatos([]);
         const getData = async () => {
-            const { data } = await axios.get(`/api/viaticos/${params.noemp}`);
+            //const { data } = await axios.get(`/api/viaticos/${count.toString()}/${params.noemp}`);
+            const { data } = await axios.get(`/api/viaticos/${count}/${params.noemp}`);
             setLoading(false)
             setDatos(data.data)
             //console.log({ data });
