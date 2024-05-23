@@ -26,7 +26,7 @@ const Modaltest = ({ isVisible, onClose, empleados }: Props) => {
                         </div>
                         <div className="relative p-1 flex-auto">
                             <form className="bg-white rounded px-8 pt-4 pb-8  w-full">
-                                <div className='flex justify-between'>
+                                <div className='lg:flex md:flex justify-between'>
                                     <div className='px-2'>
                                         <label className="block text-sm text-gray-500 dark:text-white"> Nombre </label>
                                         <input

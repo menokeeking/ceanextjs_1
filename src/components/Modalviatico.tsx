@@ -9,22 +9,15 @@ import { Ciudad } from '@/interfaces/Ciudades';
 import calcularDiferenciaFechas from '@/funciones/difdias';
 import obtenerfecha from '@/funciones/diadehoy';
 
-
-
 interface Props {
     isVisible: boolean;
     onClose: () => void;
     detviatico: DetalleViatico;
     ciudades: Ciudad[];
-    //handleChangeCiudad(e: ChangeEvent<HTMLSelectElement>): void
     modificaModal(tablaviaticos: TablaViaticos): void;
 }
 
-
 const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal }: Props) => {
-
-    if (!isVisible) return null;
-
 
     const [valordias, setvalordias] = useState(detviatico.dias);
     const [selCdOrigen, setselCdOrigen] = useState(detviatico.origen)
@@ -33,6 +26,7 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal 
     const [valorFreg, setvalorFreg] = useState(new Date(detviatico.fechaRegreso));
     const { register, handleSubmit, formState: { errors }, control, setValue } = useForm()
 
+    if (!isVisible) return null;
     // const onSubmit = handleSubmit ( ({ diasmrr,comisiontitulo,comisionDetalle,ciudades,ciudades2,fechaSalida,fechaRegreso }) => {
     const onSubmit = handleSubmit ( (data) => {
 
@@ -40,31 +34,29 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal 
             oficina: +(detviatico.noViatico.substring(2, 1)),
             ejercicio: +(20+detviatico.noViatico.substring(detviatico.noViatico.search('/')+1,detviatico.noViatico.length)),
             noViat: +(detviatico.noViatico.substring(3, detviatico.noViatico.search('/'))),
-            fecha: valorFsal.toString(),
-            noEmp: 7120,
-            origenId: data.ciudades,
-            destinoId: data.ciudades2,
-            motivo: data.comisiontitulo,
-            fechaSal: data.fechaSalida,
-            fechaReg: data.fechaRegreso,
-            dias: data.diasmrr,
-            inforFecha: '',
-            inforAct: data.comisionDetalle,
+            fecha: obtenerfecha(valorFsal), // CAMPO QUE SE ACTUALIZA
+            noEmp: detviatico.noEmp,
+            origenId: data.ciudades,        // CAMPO QUE SE ACTUALIZA
+            destinoId: data.ciudades2,      // CAMPO QUE SE ACTUALIZA
+            motivo: data.comisiontitulo,    // CAMPO QUE SE ACTUALIZA
+            fechaSal: data.fechaSalida,     // CAMPO QUE SE ACTUALIZA
+            fechaReg: data.fechaRegreso,    // CAMPO QUE SE ACTUALIZA
+            dias: data.diasmrr,             // CAMPO QUE SE ACTUALIZA
+            inforFecha: obtenerfecha(new Date),  // CAMPO QUE SE ACTUALIZA
+            inforAct: data.comisionDetalle, // CAMPO QUE SE ACTUALIZA
             nota: 'web',
-            estatus: 1,
-            fechaMod: obtenerfecha(),
+            estatus: 0,
+            fechaMod: obtenerfecha(new Date),
             pol: 0,
             polMes: 0,
             caja: 0,
             cajaVale: 0,
             cajaRepo: 0,
             noEmpCrea: 0,
-            inforResul: ''
+            inforResul: 'string'                  // CAMPO QUE SE ACTUALIZA
         } as TablaViaticos
-
         //console.log("Desde modal al presionar actualizar"+ JSON.stringify(viatico))
         modificaModal(viatico)
-
     })
 
     function handleChange(e: ChangeEvent<HTMLSelectElement>): void {
@@ -79,21 +71,18 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal 
 
     const manejarCambio = (date: Date, name: string) => {
         // Aquí puedes agregar más lógica si es necesario
-
         if (name == "fechaSalida") {
             setvalordias(calcularDiferenciaFechas(valorFreg, date))
         } else {
             setvalordias(calcularDiferenciaFechas(date, valorFsal))
         }
-
         setValue("diasmrr", calcularDiferenciaFechas(date, valorFsal))
-
     };
 
     return (
 
         <>
-            <div className="py-20 justify-center items-center bg-black bg-opacity-25 backdrop-blur-sm overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className="py-10 justify-center items-center bg-black bg-opacity-25 backdrop-blur-sm overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div className="relative w-screen my-6 mx-auto max-w-2xl">
                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-100 outline outline-1 outline-gray-300 focus:outline-none">
                         <div className="flex px-4 items-start justify-between p-2 border-b border-solid rounded-t bg-gray-200 ">
@@ -112,26 +101,24 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal 
                         <div className="relative p-1 flex-auto">
                             <form className="bg-white rounded px-4 pt-4 pb-4  w-full" onSubmit={onSubmit}>
 
-                                <div className="grid grid-cols-2 gap-2">
+                                <div className="grid grid-cols-2 lg:gap-2">
                                     <div className='p-3'>
                                         <div className='flex justify-start'>
                                             <label className="block p-2 text-sm text-gray-500 dark:text-white"> Fecha </label>
                                             <label className="block p-2 text-sm text-gray-500 dark:text-white">
-                                                {/* <MyDatePicker fecha={detviatico.fecha} selectedDate={selectedDate} onChangeSelectedDate={onChangeSelectedDateHandler }  />  */}
-                                                {/* {selectedDate?.toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })} </label> */}
                                                 {new Date(detviatico.fecha)?.toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })} </label>
                                         </div>
                                     </div>
                                     <div className='grid justify-center'>
-                                        <p className="text-2xl text-primary-900">Viático<strong className="font-bold"> {detviatico.noViatico} </strong></p>
-                                        <p className="flex justify-end text-md text-primary-900">Importe: ${detviatico.importe}</p>
+                                        <p className="lg:text-2xl text-primary-900">Viático<strong className="font-bold"> {detviatico.noViatico} </strong></p>
+                                        <p className="lg:flex justify-end text-md text-primary-900">Importe: ${detviatico.importe}</p>
                                     </div>
 
 
                                 </div>
-                                <div className="grid grid-cols-2 gap-2">
-                                    <div className='p-3'>
-                                        <div className='px-2 py-4'>
+                                <div className="grid lg:grid-cols-2 lg:gap-2">
+                                    <div className='lg:p-3 px-3'>
+                                        <div className='px-2 lg:py-4 py-2'>
                                             <label htmlFor="ciudades" className="block text-sm text-gray-500 dark:text-white">
                                                 Origen
                                             </label>
@@ -160,7 +147,7 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal 
                                                 )}
                                             />
                                         </div>
-                                        <div className='px-2 py-4'>
+                                        <div className='px-2 lg:py-4 py-2'>
                                             <label htmlFor="ciudades2" className="block text-sm text-gray-500 dark:text-white">
                                                 Destino
                                             </label>
@@ -191,7 +178,7 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal 
                                         </div>
 
                                     </div>
-                                    <div className='flex p-3'>
+                                    <div className='flex px-3'>
 
                                         <div className='px-1 py-4'>
                                             <label className="block text-sm text-gray-500 dark:text-white"> Salida </label>
@@ -220,7 +207,7 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal 
                                     </div>
                                 </div>
 
-                                <div className='flex p-3 '>
+                                <div className='flex lg:p-3 px-3 '>
                                     <div className='w-full'>
                                         <div className='px-2 py-4'>
                                             <label className="block text-sm text-gray-500 dark:text-white"> Titulo de la Comisión </label>
@@ -260,7 +247,6 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal 
                     </div>
                 </div>
             </div>
-
 
         </>
     );

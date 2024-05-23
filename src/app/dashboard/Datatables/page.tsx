@@ -73,19 +73,19 @@ function Datatable() {
             name: "Fecha",
             selector: (row: any) => moment( row.fecha ).format('DD/MM/YYYY'),
             sortable: true,
-            maxWidth: '100px',
+            //maxWidth: '100px',
         },
         {
             name: "Origen",
             selector: (row: any) => row.origen,
             sortable: true,
-            maxWidth: '100px',
+            //maxWidth: '100px',
         },
         {
             name: "Destino",
             selector: (row: any) => row.destino,
             sortable: true,
-            maxWidth: '150px',
+            //maxWidth: '150px',
         },
         {
             name: "Motivo",
@@ -93,7 +93,7 @@ function Datatable() {
             cell: (row: any) => <div style={{fontSize: '10px'}}>{row.movito}</div>,
             sortable: true,
             wrap: true,
-            maxWidth: '600px',
+            //maxWidth: '600px',
             //format: (row: any) => `${row.movito.slice(0, 200)}...`
         },
         {
@@ -164,7 +164,7 @@ function Datatable() {
     return (
         <>
             
-            <div className='m-4 w-auto'>
+            <div className='flex-col items-center justify-center -z-10 fixed w-100%'>
 
                 <DataTable
                     title="Viaticos por Empleado"
@@ -179,7 +179,7 @@ function Datatable() {
                     subHeaderComponent={datos.length > 0 && <> <TextField
                         id="search"
                         type="text"
-                        placeholder="Buscar"
+                        placeholder="Buscarss"
                         aria-label="Search Input"
                         value={filterText}
                         onChange={e => setFilterText(e.target.value.toUpperCase())}
@@ -193,7 +193,7 @@ function Datatable() {
                     //selectableRows
                     progressPending={loading}
                     progressComponent={<Progress />}
-                    noDataComponent={<p className='py-6 text-md text-gray-600'>Sin información</p>}
+                    noDataComponent={<p className='py-6 text-md text-gray-600'>Sin información mrr</p>}
                     highlightOnHover
                     persistTableHead
 

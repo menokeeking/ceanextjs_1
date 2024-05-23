@@ -9,6 +9,9 @@ interface CounterState {
     esinicio: () => void
     noemp: number
     alinicio: boolean
+    nombredinamico: string
+    actnombredin: (value: string) => void
+    actnoemp: (value: number) => void
 }
 
  const encrypt = (data: any) => CryptoJS.AES.encrypt(JSON.stringify(data), 'secret key').toString();
@@ -25,7 +28,10 @@ export const useCounterStore = create<CounterState>()(
             })),
             esinicio: () => set({alinicio: true}),
             noemp: 0,
-            alinicio: false
+            alinicio: false,
+            nombredinamico: "",
+            actnombredin: (value: string) => set({nombredinamico: value}),
+            actnoemp: (value: number) => set({noemp: value})
         }), {
         name: "mrr-storage",
         storage: ({

@@ -9,16 +9,14 @@ export const authOptions: NextAuthOptions = {
 
     providers: [
         CredentialsProvider({
-            name: 'credentials',
+            name: 'Credentials',
             credentials: {
                 email: { label: "Usuario", type: "text" },
                 password: { label: "Password", type: "password" }
             },
+
             async authorize(credentials) {
-
-                //console.log(credentials)
-                try {
-
+                //try {
                     const { data } = await axios.post('http://200.56.97.5:7281/api-viaticos/Auth/login?user=' + credentials?.email + '&password=' + credentials?.password);
                     if (data) {
                         //console.log(data.userData.deptoDescripcion)
@@ -31,12 +29,13 @@ export const authOptions: NextAuthOptions = {
                         }
                     }
 
-                } catch (error) {
-                    if (error instanceof AxiosError) {
-                        if (!error.response?.data.ok) throw new Error("El usuario y/o contraseña no son válidos")
-                    }
-
-                }
+                //} catch (error) {
+                    // if (error instanceof AxiosError) {
+                    //     if (!error.response?.data.ok) throw new Error("El usuario y/o contraseña no son válidos")
+                    // }
+                    //throw new Error("El usuario y/o contraseña no son válidos")
+                    //return null;
+                //}
                 return null;
 
             },
@@ -45,17 +44,21 @@ export const authOptions: NextAuthOptions = {
     pages: {
         signIn: "/login",
     },
+    session: {
+        strategy: "jwt",
+      },
 
     callbacks: {
-        jwt({ account, token, user, profile, session }) {
+        async jwt({ account, token, user, profile, session }) {
             if (user) token.user = user;
             return token;
         },
-        session({ session, token }) {
+        async session({ session, token }) {
             session.user = token.user as any;
             //session.user.depto = token.
             return session
         },
+        
     },
 }
 
