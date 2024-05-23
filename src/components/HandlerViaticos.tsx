@@ -3,7 +3,7 @@ import { Ciudad } from '@/interfaces/Ciudades';
 import { DetalleViatico } from '@/interfaces/DetalleViatico';
 import { TablaViaticos } from '@/interfaces/TablaViaticos';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Modalviatico from './Modalviatico';
 import Tablasdeviaticos from './Tablasdeviaticos';
 import Tarjetaempleado from './Tarjetaempleado';
@@ -49,6 +49,7 @@ function HandlerViaticos({ params }: { params: { noemp: string} }) {
 
     return (
         <div>
+            <p>Hola mundo, Empleado: {params.noemp }</p>
             {/* <Modalviatico
                 isVisible={showModal}
                 onClose={() => setShowModal(false)}
