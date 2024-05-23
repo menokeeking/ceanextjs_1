@@ -125,7 +125,8 @@ function HandlerEmpleados() {
                         <IoReader className="ml-2 w-5 h-5 text-red-900" />
                     </button> */}
 
-                    <Link href={`/dashboard/Datatables/${row.idEmpleado}`} >
+                    {/* </><Link href="/tasks/[taskid]" as={`/tasks/${task._id}`}> */}
+                    <Link href="/dashboard/Datatables/[noemp]" as={`/dashboard/Datatables/${row.idEmpleado}`} >
                         <IoReader className="ml-2 w-5 h-5 text-red-900" />
                     </Link>
                 </>
