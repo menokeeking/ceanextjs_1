@@ -18,16 +18,23 @@ function Tarjetaempleado({ params }: { params: { noemp: string } }) {
     };
 
     useEffect(() => {
-
-        const verificar = async () => {
-            const result = await isImageFound(imagePath);
-            if (result.status === 404) {
-                setpathimg(anyExistingImage)
-            } else {
-                setpathimg(imagePath)
+        try {
+            const verificar = async () => {
+                const result = await isImageFound(imagePath);
+                if (result.status === 404) {
+                    setpathimg(anyExistingImage)
+                } else {
+                    setpathimg(imagePath)
+                }
             }
+            verificar();
+        }catch (error) {
+            setpathimg(anyExistingImage)
         }
-        verificar();
+        
+        
+
+        
 
     }, [])
 

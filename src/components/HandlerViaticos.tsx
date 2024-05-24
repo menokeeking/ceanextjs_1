@@ -1,12 +1,12 @@
 
-// import { Ciudad } from '@/interfaces/Ciudades';
-// import { DetalleViatico } from '@/interfaces/DetalleViatico';
-// import { TablaViaticos } from '@/interfaces/TablaViaticos';
-// import axios from 'axios';
-// import { useEffect, useState } from 'react'
+import { Ciudad } from '@/interfaces/Ciudades';
+import { DetalleViatico } from '@/interfaces/DetalleViatico';
+import { TablaViaticos } from '@/interfaces/TablaViaticos';
+import axios from 'axios';
+import { useEffect, useState } from 'react'
 // import Modalviatico from './Modalviatico';
 // import Tablasdeviaticos from './Tablasdeviaticos';
-// import Tarjetaempleado from './Tarjetaempleado';
+import Tarjetaempleado from './Tarjetaempleado';
 
 function HandlerViaticos({ params }: { params: { noemp: string} }) {
 
@@ -57,7 +57,7 @@ function HandlerViaticos({ params }: { params: { noemp: string} }) {
                 ciudades={ciudades}
                 modificaModal={modificaModal}
             /> */}
-            {/* <Tarjetaempleado params={{ noemp: params.noemp }} /> */}
+            <Tarjetaempleado params={{ noemp: params.noemp }} />
             {/* <Tablasdeviaticos params={{ noemp: params.noemp, muestraModal:muestraModal }} /> */}
         </div>
     )
