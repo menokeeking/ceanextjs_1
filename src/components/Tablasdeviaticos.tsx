@@ -1,6 +1,5 @@
 "use client"
 import { TablaListaViaticos } from '@/interfaces/TablaListaViaticos';
-import { DetalleViatico } from '@/interfaces/DetalleViatico';
 import { useCounterStore } from '@/store/counterStore';
 import axios from 'axios';
 import moment from 'moment';
@@ -48,30 +47,18 @@ cursor: pointer;`;
 function Tablasdeviaticos({ params }: 
     { params: { 
         noemp: string, 
-        muestraModal: (detviatico: DetalleViatico)=> void,
+        muestraModal: (detviatico: any)=> void,
+        realoadData: boolean,
         } 
     }) 
     {
 
     const count = useCounterStore((state) => state.count)
     const [datos, setDatos] = useState([] as TablaListaViaticos[])
-    const [detviatico, setdetviatico] = useState<DetalleViatico>({ fecha: '01/01/2024', fechaRegreso: '01/01/2024', fechaSalida: '01/01/2024' } as DetalleViatico)
     const [filterText, setFilterText] = useState('');
     const [loading, setLoading] = useState(false)
 
     const router = useRouter()
-
-    const cargarModal = async (datam: any) => {
-        const getDatacm = async () => {
-            const { data } = await axios.get(`/api/viatico_detalle/${datam.ejercicio.toString()}/${datam.viatico.toString()}/${datam.oficina.toString()}`);
-            setdetviatico(data.data)  //Se debe habilitar
-            params.muestraModal(detviatico);
-            //console.log()
-        }
-        await getDatacm();
-        
-        //setShowModal(true)  //Se debe habilitar
-    }
 
     useEffect(() => {
         setLoading(true)
@@ -83,7 +70,7 @@ function Tablasdeviaticos({ params }:
         }
         getData();
 
-    }, [])
+    }, [params.realoadData])
 
     const paginacionOpciones = {
         rowsPerPageText: "Registros por Página",
@@ -175,7 +162,8 @@ function Tablasdeviaticos({ params }:
                 <>
                     <button
                         type="button"
-                        onClick={() => { cargarModal(row) }}>
+                        // onClick={() => { cargarModal(row) }}>
+                        onClick={() => { params.muestraModal(row) }}>
                         <IoEye className="w-5 h-5 text-red-900" />
                     </button>
                     <button type="button">

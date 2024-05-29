@@ -115,20 +115,21 @@ function HandlerEmpleados() {
                         <IoPencilSharp className="ml-2 w-5 h-5 text-red-900" />
                     </button>
 
-                    {/* <button title='Detalle Viaticos'
+                    <button title='Detalle Viaticos'
                         type="button"
                         onClick={() => {
                             actnombredin(row.nombre + ' ' + row.paterno + ' ' + row.materno)
-                            router.push(`/dashboard/Datatables/${row.idEmpleado}`)
+                            router.push(`/dashboard/Detallexemp?id=${row.idEmpleado}`)
                         }}
                     >
                         <IoReader className="ml-2 w-5 h-5 text-red-900" />
-                    </button> */}
+                    </button>
 
                     {/* </><Link href="/tasks/[taskid]" as={`/tasks/${task._id}`}> */}
-                    <Link href="/dashboard/Datatables/[noemp]" as={`/dashboard/Datatables/${row.idEmpleado}`} >
+                    {/* <Link href="/dashboard/Datatables/[noemp]" as={`/dashboard/Datatables/${row.idEmpleado}`} > */}
+                    {/* <Link href={`/dashboard/Detallexemp?id=${row.idEmpleado}`}>
                         <IoReader className="ml-2 w-5 h-5 text-red-900" />
-                    </Link>
+                    </Link> */}
                 </>
         }
     ]
@@ -158,10 +159,11 @@ function HandlerEmpleados() {
                             placeholder="Buscar"
                             aria-label="Search Input"
                             value={filterText}
+                            className="text-gray-600"
                             onChange={e => setFilterText(e.target.value.toUpperCase())}>
                         </TextField>
                         <XCircleIcon
-                            className=" h-7 w-7 text-gray-200 bg-primary-900 border-top-left-radius: 0 border-bottom-left-radius: 0 border-top-right-radius: 5px border-bottom-right-radius: 5px cursor-pointer"
+                            className=" h-7 w-7 text-gray-200 bg-primary-900 border-top-left-radius: 0 border-bottom-left-radius: 0 border-top-right-radius: 10px border-bottom-right-radius: 10px cursor-pointer"
                             aria-hidden="true"
                             onClick={() => setFilterText('')}
                         />

@@ -276,7 +276,7 @@ function Page({ params }: { params: { noemp: string, nombre: string } }) {
 
     return (
         <>
-            <div className="">
+            {/* <div className="">
                 <Modalviatico
                     isVisible={showModal}
                     onClose={() => setShowModal(false)}
@@ -284,7 +284,7 @@ function Page({ params }: { params: { noemp: string, nombre: string } }) {
                     ciudades={ciudades}
                     modificaModal={modificaModal}
                 />
-            </div>
+            </div> */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full">
                 <div className="border rounded-lg bg-gray-100">
                     <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 p-8">
