@@ -67,6 +67,7 @@ function Tablasdeviaticos({ params }:
             const { data } = await axios.get(`/api/viaticos/${count}/${params.noemp}`);
             setLoading(false)
             setDatos(data.data)
+            console.log(data.data)
         }
         getData();
 
@@ -188,7 +189,7 @@ function Tablasdeviaticos({ params }:
     }
 
     return (
-        <div className='flex-col items-center justify-center -z-10 fixed'>
+        <div className='flex-col items-center justify-center -z-10'>
 
             <DataTable
                 columns={columns}

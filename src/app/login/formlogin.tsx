@@ -7,6 +7,8 @@ import Alert from '@/app/login/Alert';
 import { useCounterStore } from '@/store/counterStore';
 
 
+
+
 interface Props {
     titulo: string;
 }
@@ -19,7 +21,7 @@ export const FormLogin = ({ titulo }: Props) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const esinicio = useCounterStore(state => state.esinicio)
-
+    
 
     const onSubmit = handleSubmit(async (data) => {
 
@@ -32,22 +34,27 @@ export const FormLogin = ({ titulo }: Props) => {
                 redirect: false,
             });
 
-            if(!res?.error) {
+            if (!res?.error) {
+
                 esinicio()
                 router.push("/dashboard/principal");
             }
             else {
-                
+                //actidemp()
                 setError('Cualquier cosa')
-                setLoading (false)
+                setLoading(false)
             }
         } catch (error: any) {
             console.log("hola del catch error")
-            setLoading (false)
+            setLoading(false)
             setError('Cualquier cosa')
         }
 
     })
+
+    const convertirAMayusculas = (event: React.FormEvent<HTMLInputElement>) => {
+        event.currentTarget.value = event.currentTarget.value.toUpperCase();
+    };
 
     return (
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-white dark:border-gray-100">
@@ -58,12 +65,19 @@ export const FormLogin = ({ titulo }: Props) => {
                 <form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Usuario</label>
-                        <input {...register("fullname", { required: true })} type="text" id="fullname" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-300 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Capture el Usuario" />
+                        <input {...register("fullname", { required: true })}
+                            type="text" id="fullname"
+                            onInput={convertirAMayusculas}
+                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-300 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Capture el Usuario" />
                         {errors.fullname && <p className='text-red-600 text-xs py-1'>Este campo es requerido!</p>}
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Password</label>
-                        <input {...register("password", { required: true })} type="password" id="password" placeholder="•••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-00 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        <input {...register("password", { required: true })} 
+                            type="password" id="password" 
+                            placeholder="•••••" 
+                            onInput={convertirAMayusculas}
+                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-00 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                         {errors.password && <p className='text-red-600 text-xs py-1'>Este campo es requerido!</p>}
                     </div>
 

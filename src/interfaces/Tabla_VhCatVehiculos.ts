@@ -1,0 +1,16 @@
+export interface Tabla_VhCatVehiculos {
+    numero: number,
+    ano: number,
+    noActivo: string,
+    placas: string,
+    color: string,
+    odometro: number,
+    estatus: number,
+    ubicacion: string,
+    fUltServ: string | null,
+    fProxServ: string | null,
+    tipo: string,
+    capacidad: string,
+    pernoc: number,
+    comentarios: string,  
+}

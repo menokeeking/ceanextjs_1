@@ -1,0 +1,31 @@
+export interface TablaVehiculos {
+    //vh_catvehiculos
+    numero: number,
+    ano: number,
+    noActivo: string,
+    placas: string,
+    color: string,
+    odometro: number,
+    estatus: number,
+    ubicacion: string,
+    fUltServ: string | null,
+    fProxServ: string | null,
+    tipo: string,  
+    //De aqui para abajo son bm_activos
+    capacidad: string,
+    pernoc: number,
+    comentarios: string,
+    marca: string,
+    modelo: string,
+    serie: string,
+    descripcion: string,
+    fechaAdq: string,
+    bm_estatus: number,
+    importe: number,
+    resguardo: number,
+    depto: string,
+    resguardante: string,
+    nombreAseg: string,
+    noSeguro: string,
+    vigencia: string
+}

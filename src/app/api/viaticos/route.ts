@@ -21,7 +21,7 @@ export async function GET() {
 
 export async function PUT(request: Request) {
 
-  const body = await request.json()
+  const body = await request
 
   //console.log("Descripcion de body: "+body)
 
@@ -29,7 +29,7 @@ export async function PUT(request: Request) {
         const response = await axios.put( `http://200.56.97.5:7281/api-viaticos/Viaticos`, body);
         //console.log("lO QUE REGresa el response " +response)
         const responseData = response.data;
-        console.log(response.data)
+        //console.log(response.data)
 
         return NextResponse.json({
             message: "La actualización PUT fue exitosa"

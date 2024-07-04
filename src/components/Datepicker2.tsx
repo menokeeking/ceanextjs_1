@@ -28,7 +28,7 @@ export const DatePickerField: React.FC<DatePickerFieldProps> = ({ control, name,
         }}
         locale="es"
         dateFormat='dd/MM/yyyy'
-        className="w-28 p-1 text-center bg-gray-50 border border-gray-300 text-gray-900 text-xs lg:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 
+        className="w-28 py-1.5 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm lg:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 
                     block"
         showYearDropdown
         scrollableMonthYearDropdown

@@ -11,7 +11,7 @@ interface CounterState {
     alinicio: boolean
     nombredinamico: string
     actnombredin: (value: string) => void
-    actnoemp: (value: number) => void
+    actnoemp: (value: number) => void,
 }
 
  const encrypt = (data: any) => CryptoJS.AES.encrypt(JSON.stringify(data), 'secret key').toString();

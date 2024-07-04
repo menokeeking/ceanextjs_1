@@ -31,7 +31,7 @@ export default function DashboardLayout({
         <div className='z-50'>
           <SideNavbar />
         </div>
-        <div className='lg:pl-60 pt-24 p-4 z-10'>
+        <div className='lg:pl-60 pt-24 p-4 z-0'>
           {children}
         </div>
       </div>

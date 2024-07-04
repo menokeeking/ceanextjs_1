@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useSession, signOut } from 'next-auth/react'
 import { Fragment, useEffect, useState } from 'react'
 import { Menu, Transition, Dialog } from '@headlessui/react'
-import { ChevronDownIcon, UserCircleIcon } from '@heroicons/react/20/solid'
+import { ArrowRightCircleIcon, ChevronDownIcon, UserCircleIcon, CalendarIcon, UserIcon, CalendarDaysIcon } from '@heroicons/react/20/solid'
 import ModalSetejercicio from './ModalSetejercicio';
 import { useCounterStore } from '@/store/counterStore';
 
@@ -41,6 +41,7 @@ function Navbar() {
 
             <ul className='flex gap-x-3 items-center'>
               <li className='py-4'>
+
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
                     <Menu.Button className="inline-flex w-full justify-between items-center gap-x-1.5 rounded-md bg-slate-100 px-3 py-1 text-xs text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
@@ -59,15 +60,21 @@ function Navbar() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
+
                     <Menu.Items className="absolute lg:-right-0  z-50 mt-1 w-48 origin-top-right rounded-md bg-slate-100 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <div className="py-1">
+                        
                         <Menu.Item>
                           {({ active }) => (
-                            <Link href="/dashboard/profile" 
-                            className={classNames(
-                              active ? 'bg-gray-200 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-1 w-full text-left '
-                            )}>Perfil</Link>
+                            <Link href="/dashboard/profile"
+                              className={classNames(
+                                active ? 'flex items-center gap-x-3 bg-gray-200 text-gray-900' : 'flex items-center gap-x-3 text-gray-700',
+                                'block px-4 py-1 w-full text-left '
+                              )}>
+                              <UserIcon className="h-5 w-5 " aria-hidden="true" />
+                              Perfil
+                              
+                            </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
@@ -76,11 +83,12 @@ function Navbar() {
                               type="submit"
                               onClick={openModal}
                               className={classNames(
-                                active ? 'bg-gray-200 text-gray-900' : 'text-gray-700',
+                                active ? 'flex items-center gap-x-3 bg-gray-200 text-gray-900' : 'flex items-center gap-x-3 text-gray-700',
                                 'block px-4 py-1 w-full text-left'
                               )}
                             >
-                              Cambio de Ejercicio
+                              <CalendarDaysIcon className="h-5 w-5 " aria-hidden="true" />
+                              Ejercicio
                             </button>
                           )}
                         </Menu.Item>
@@ -93,9 +101,11 @@ function Navbar() {
                                   signOut({ callbackUrl: '/login', redirect: true })
                               }}
                               className={classNames(
-                                active ? 'bg-gray-200 text-gray-900' : 'text-gray-700',
+                                active ? 'flex items-center gap-x-3 bg-gray-200 text-gray-900' : 'flex items-center gap-x-3 text-gray-700',
                                 'block px-4 py-1 w-full text-left'
-                              )}>Salir</button>
+                              )}>
+                              <ArrowRightCircleIcon className="h-5 w-5 " aria-hidden="true" />
+                              Cerrar Sesión</button>
                           )}
                         </Menu.Item>
                       </div>

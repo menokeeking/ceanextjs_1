@@ -8,7 +8,7 @@ function Detallexemp() {
     const id = searchParams.get('id');
 
   return (
-    <div>
+    <div className='-z-10'>
         <HandlerViaticos params={{
                 noemp: id!
             }} />

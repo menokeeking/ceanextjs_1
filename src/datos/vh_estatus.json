@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "descripcion": "ACTIVO"
+    },
+    {
+        "id": 2,
+        "descripcion": "TALLER"
+    },
+    {
+        "id": 3,
+        "descripcion": "AGENCIA"
+    },
+    {
+        "id": 4,
+        "descripcion": "TALLER EXTERNO"
+    },
+    {
+        "id": 5,
+        "descripcion": "PROCESO BAJA"
+    },
+    {
+        "id": 6,
+        "descripcion": "BAJA"
+    },
+    {
+        "id": 7,
+        "descripcion": "COMODATO"
+    }
+]

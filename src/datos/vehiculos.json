@@ -1,0 +1,702 @@
+ [
+        {
+            "numero": 1,
+            "marca": "FORD",
+            "modelo": "2013",
+            "ano": 2013,
+            "placas": "AN71801",
+            "serie": "8AFER5AA4D6038004",
+            "descripcion": "PICK UP RANGER, BLANCO OXFORD, TRANSMISION MANUAL 5 VELOCIDADES, MOTOR I-4 CILINDROS, 2.5 L, AIRE ACONDICIONADO, PLACAS AN71801, NO. ECON. 01",
+            "depto": "TRAMITE BAJA"
+          },
+          {
+            "numero": 2,
+            "marca": "FORD",
+            "modelo": " 1993",
+            "ano": 1998,
+            "placas": "BGD5208",
+            "serie": "1FBJS31G9PHB38101",
+            "descripcion": "CLUB WAGON XLT COLOR BLANCO, E-350, 8 CIL., CAPACIDAD P/15 PASAJEROS, PLACAS BGD5208, NO. ECON. 02",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 3,
+            "marca": "CHEVROLET",
+            "modelo": " 2005",
+            "ano": 2005,
+            "placas": "AJV1525",
+            "serie": "1GAHG39U251254325",
+            "descripcion": "PANEL VAN, BLANCO, 15 \nPASAJEROS, V8,  AUTOMATICA, A/C, PLACAS AJV1525, NO ECON. 03",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 4,
+            "marca": "FORD",
+            "modelo": "2013",
+            "ano": 2013,
+            "placas": "AN70000",
+            "serie": "8AFER5AA0D6132610",
+            "descripcion": "PICK UP RANGER, BLANCO, STANDAR, MOTOR I-4 CIL, 2.5 L, A/C, PLACAS AN70000, NO. ECON. 04",
+            "depto": "COORDINACION DE MANTENIMIENTO ELECTRICO"
+          },
+          {
+            "numero": 5,
+            "marca": "NISSAN",
+            "modelo": " 2003",
+            "ano": 2003,
+            "placas": "AJV1538",
+            "serie": "3N1CB51S63K233708",
+            "descripcion": "NISSAN SENTRA, MOTOR DE 4 CIL., STANDAR, BLANCO, PLACAS AJV1538, NO. ECON. 05",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 6,
+            "marca": "FORD",
+            "modelo": "2013",
+            "ano": 2013,
+            "placas": "AN71802",
+            "serie": "8AFER5AA0D6132655",
+            "descripcion": "PICK UP RANGER, BLANCO, STANDAR, MOTOR I-4 CIL, 2.5 L, A/C, PLACAS AN71802, NO. ECON. 06",
+            "depto": "DIRECCION GENERAL"
+          },
+          {
+            "numero": 7,
+            "marca": "FORD",
+            "modelo": "2013",
+            "ano": 2013,
+            "placas": "AN69999",
+            "serie": "8AFER5AA1D6037960",
+            "descripcion": "PICK UP RANGER, BLANCO, STANDAR, MOTOR I-4 CIL, 2.5 L, A/C, PLACAS AN69999, NO. ECON. 07",
+            "depto": "COORDINACION DE MANTENIMIENTO MECANICO"
+          },
+          {
+            "numero": 9,
+            "marca": "CHEVROLET ",
+            "modelo": " 2003",
+            "ano": 2003,
+            "placas": "AJV1517",
+            "serie": "1GAHG39U831219933",
+            "descripcion": "PANEL \nCAP. 15 PERSONAS, BLANCO,  A/C DOBLE, MOTOR V-8  AUTOMATICA, PLACAS AJV1517 NUM. ECON. 09",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 10,
+            "marca": "CHEVROLET ",
+            "modelo": " 2003",
+            "ano": 2003,
+            "placas": "AM95681",
+            "serie": "1GCEK14T63Z324175",
+            "descripcion": "PICK-UP SILVERADO 4X4, BLANCO AUTOMATICO, MOTOR V-8,  A/C, PLACAS AM95681 NO. ECON 10",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 11,
+            "marca": "CHEVROLET",
+            "modelo": " 2004",
+            "ano": 2004,
+            "placas": "AM95695",
+            "serie": "1GCEC14X34Z252059",
+            "descripcion": "PICK-UP SILVERADO, BLANCO, 6 CIL., STANDAR, PLACAS AM95695 NO. ECON. 11",
+            "depto": "COORDINACION DE OPERACION"
+          },
+          {
+            "numero": 12,
+            "marca": "INTERNATIONAL",
+            "modelo": "2014",
+            "ano": 2013,
+            "placas": "6ABX17",
+            "serie": "3HBBZSEN4EL759122",
+            "descripcion": "AUTOBUS 45 PASAJEROS, BLANCO, 6 CIL, AUTOMATICO, A/C, PLACAS 6ABX17, NO. ECON. 12",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 17,
+            "marca": "DODGE",
+            "modelo": " 2000",
+            "ano": 2000,
+            "placas": "AM95712",
+            "serie": "3B6MC3653YM238113",
+            "descripcion": "CAMION DODGE RAM-4000 REDILAS, BLANCO, MOTOR 8CIL, STANDAR, A/C,  PLACAS AM95712,  NO. ECON. 17",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 19,
+            "marca": "CHEVROLET",
+            "modelo": " 2003",
+            "ano": 2002,
+            "placas": "AM95719",
+            "serie": "3GBK634E13M102606",
+            "descripcion": "CAMION CHASSIS C-35,  REDILAS, BLANCO, STANDAR, , MOTOR V-8, PLACAS AM95719, NO. ECON. 19",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 21,
+            "marca": "CHEVROLET ",
+            "modelo": " 2005",
+            "ano": 2005,
+            "placas": "AM95714",
+            "serie": "3GBJC34R95M115047",
+            "descripcion": "CAMION SILVERADO 3500 REDILAS, BLANCO, STANDAR, V8, A/C, PLACAS AM95714, NO. ECON. 21",
+            "depto": "COORDINACION DE MANTENIMIENTO MECANICO"
+          },
+          {
+            "numero": 25,
+            "marca": "CHEVROLET",
+            "modelo": " 2003",
+            "ano": 2002,
+            "placas": "AM95720",
+            "serie": "3GBK634E13M102556",
+            "descripcion": "CAMION CHASSIS C-35,  REDILAS, BLANCO, STANDAR, , MOTOR V-8, PLACAS AM95720, NO. ECON. 25",
+            "depto": "COORDINACION DE MANTENIMIENTO ELECTRICO"
+          },
+          {
+            "numero": 26,
+            "marca": "CHEVROLET 4X4",
+            "modelo": " 2004",
+            "ano": 2004,
+            "placas": "AM95707",
+            "serie": "1GCEK14T74Z260259",
+            "descripcion": "PICK-UP CHEVROLET 4X4 SILVERADO COLOR  BCO. MOD  2004, MOTOR 8, TRANS\nAUTOMATICA, PLACAS AM95707 NO. ECON. 26",
+            "depto": "COORDINACION DE MANTENIMIENTO ELECTRICO"
+          },
+          {
+            "numero": 27,
+            "marca": "CHEVROLET ",
+            "modelo": " 2005",
+            "ano": 2005,
+            "placas": "AM95715",
+            "serie": "3GBJC34R85M115069",
+            "descripcion": "CAMION 3500 REDILAS, BLANCO, STANDARD,  V8,  A/C, PLACAS AM95715, NO. ECON. 27",
+            "depto": "COORDINACION DE MANTENIMIENTO ELECTRICO"
+          },
+          {
+            "numero": 31,
+            "marca": "DODGE",
+            "modelo": " 2002",
+            "ano": 2002,
+            "placas": "AM95713",
+            "serie": "3B6MC36562M234600",
+            "descripcion": "CAMION DODGE RAM-4000, REDILAS, 8 CILINDROS, STANDAR, BLANCO, PLACAS AM95713,  NO. ECON. 31",
+            "depto": "COORDINACION DE PROTECCION CATODICA"
+          },
+          {
+            "numero": 32,
+            "marca": "INTERNATIONAL ",
+            "modelo": " 2003",
+            "ano": 2003,
+            "placas": "AM95740",
+            "serie": "3HAMAARO3L587103",
+            "descripcion": "CAMION PLATAFORMA DE 215 HP, STANDAR 5 VEL, CAP.10442 KG, BLANCO,  PLACAS AM95740, NO. ECON. 32",
+            "depto": "COORDINACION DE PROTECCION CATODICA"
+          },
+          {
+            "numero": 33,
+            "marca": "CHEVROLET",
+            "modelo": " 2003",
+            "ano": 2003,
+            "placas": "AM95716",
+            "serie": "3GBJC34R63M112085",
+            "descripcion": "CAMION CHEVROLET 3600 REDILAS, V-8, STANDAR, BLANCO, PLACAS AM95716 NO. ECON 33",
+            "depto": "COORDINACION DE PROTECCION CATODICA"
+          },
+          {
+            "numero": 34,
+            "marca": "CHEVROLET",
+            "modelo": " 2004",
+            "ano": 2004,
+            "placas": "AM95697",
+            "serie": "1GCEC14X34Z266690",
+            "descripcion": "PICK-UP SILVERADO, BLANCO, 6 CIL., STANDAR, PLACAS AM95697, NO.  ECON. 34 (PENDIENTE BAJA)",
+            "depto": "TRAMITE BAJA"
+          },
+          {
+            "numero": 37,
+            "marca": "CHEVROLET",
+            "modelo": " 1998",
+            "ano": 1998,
+            "placas": "AM95679",
+            "serie": "3GCJC54K8WG159180",
+            "descripcion": "CAMION CHEVROLET C35 REDILAS COLOR BLANCO, MOTOR V-8, 5.7 LTS. PLACAS AM95679, NO. ECON. 37",
+            "depto": "COORDINACION DE MANTENIMIENTO DE OBRA CIVIL"
+          },
+          {
+            "numero": 43,
+            "marca": "CHEVROLET ",
+            "modelo": " 2005",
+            "ano": 2005,
+            "placas": "AM95705",
+            "serie": "3GBEC14X65M110683",
+            "descripcion": "PICK-UP CHEVROLET SILVERADO 1500, BLANCO, STANDAR, A/C, V-6, \nPLACAS AM95705, NO. ECON. 43",
+            "depto": "COORDINACION DE MANTENIMIENTO DE OBRA CIVIL"
+          },
+          {
+            "numero": 44,
+            "marca": "G.M.C.",
+            "modelo": " 1988",
+            "ano": 1994,
+            "placas": "BPO7189",
+            "serie": "1GDJJ701BOJV514065",
+            "descripcion": "TRUCK-VAN GMC, COLOR AMARILLO, HIDRAULICO,  PLACAS BPO7189, NO. ECON. 044",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 45,
+            "marca": "NISSAN",
+            "modelo": " 2002",
+            "ano": 2002,
+            "placas": "AJV1540",
+            "serie": "3N1EB31S32K400232",
+            "descripcion": "NISSAN TIPO TSURU 4 PUERTAS BLANCO, MOTOR DE 4 CIL., STANDAR, AI/C, PLACAS AJV1540\nNO. ECON.  45",
+            "depto": "COORDINACION DE MANTENIMIENTO MECANICO"
+          },
+          {
+            "numero": 46,
+            "marca": "CHEVROLET ",
+            "modelo": " 2003",
+            "ano": 2003,
+            "placas": "AM95691",
+            "serie": "1GCEC14X23Z208004",
+            "descripcion": "PICK-UP CHEVROLET SILVERADO 1500, BLANCO, STANDAR, A/C, V-6, PLACAS AM95691, NO. ECON. 46",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 47,
+            "marca": "CHEVROLET",
+            "modelo": " 2004",
+            "ano": 2004,
+            "placas": "AM95692",
+            "serie": "1GCEC14X64Z252086",
+            "descripcion": "PICK-UP CHEVROLET SILVERADO 1500, BLANCO, STANDAR, A/C, V-6,\nPLACAS AM95692 ECON. 47",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 50,
+            "marca": "DODGE",
+            "modelo": " 2002",
+            "ano": 2002,
+            "placas": "AM95687",
+            "serie": "3B7HC16X72M258732",
+            "descripcion": "PICK-UP RAM-1500 DODGE, 6 CIL, STANDAR, COLOR BLANCO, PLACAS AM95687, NO. ECON. 50",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 51,
+            "marca": "CHEVROLET ",
+            "modelo": "2005",
+            "ano": 2005,
+            "placas": "AJ3909A",
+            "serie": "3GBEC14X75M108733",
+            "descripcion": "PICK-UP SILVERADO 1500, BLANCO, 6  CIL, STANDARD, A/C\n PLACAS AJ3909A, NO. ECON. 51 (SEPROA)",
+            "depto": "DIRECCION DE TECNOLOGIAS DEL AGUA"
+          },
+          {
+            "numero": 53,
+            "marca": "CHEVROLET",
+            "modelo": " 2004",
+            "ano": 2004,
+            "placas": "AM95690",
+            "serie": "1GCEC14X84Z252431",
+            "descripcion": "PICK-UP SILVERADO, BLANCO, 6 CIL, STANDAR, PLACAS AM95690, NO. ECON. 53",
+            "depto": "COORDINACION DE PROTECCION CATODICA"
+          },
+          {
+            "numero": 54,
+            "marca": "CHEVROLET",
+            "modelo": " 2004",
+            "ano": 2004,
+            "placas": "AM95693",
+            "serie": "1GCEC14X24Z252330",
+            "descripcion": "PICK-UP SILVERADO REG., BLANCO MOTOR 6, STANDAR, PLACAS AM95693, NO. ECON. 54 (PENDIENTE BAJA)",
+            "depto": "TRAMITE BAJA"
+          },
+          {
+            "numero": 61,
+            "marca": "CHEVROLET",
+            "modelo": " 2005",
+            "ano": 2005,
+            "placas": "AM95708",
+            "serie": "1GCEC19T15Z265531",
+            "descripcion": "PICK-UP SILVERADO, BLANCO CAB EXTENDIDA MOTOR V8, AUTOMATICO, PLACAS AM95708, NO. ECON. 61",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 71,
+            "marca": "CHEVROLET",
+            "modelo": " 2006",
+            "ano": 2006,
+            "placas": "AM95704",
+            "serie": "3GBEC14XX6M114690",
+            "descripcion": "PICK-UP SILVERADO, BLANCO, MOTOR 4.3, STANDAR, A C, PLACAS AM95704, NO. ECON 71",
+            "depto": "COORDINACION DE PROTECCION CATODICA"
+          },
+          {
+            "numero": 72,
+            "marca": "CHEVROLET ",
+            "modelo": " 2006",
+            "ano": 2006,
+            "placas": "AG0559A",
+            "serie": "3GBEC14X36M114773",
+            "descripcion": "PICK-UP SILVERADO, BLANCO, MOTOR 4.3, STANDAR, A C, PLACAS AG0559A, NO. ECON. 72",
+            "depto": "COORDINACION DE MANTENIMIENTO ELECTRICO"
+          },
+          {
+            "numero": 73,
+            "marca": "CHEVROLET",
+            "modelo": " 2006",
+            "ano": 2006,
+            "placas": "AM95702",
+            "serie": "3GBEC14X06M115315",
+            "descripcion": "PICK-UP SILVERADO, BLANCO, MOTOR 4.3, STANDAR, A C, PLACAS AM95702, NO. ECON. 73",
+            "depto": "COORDINACION DE OPERACION"
+          },
+          {
+            "numero": 74,
+            "marca": "FORD",
+            "modelo": " 2006",
+            "ano": 2006,
+            "placas": "AJV1521",
+            "serie": "1FBSS31L36DB12102",
+            "descripcion": "PANEL FORD CLUB WAGON  BLANCA, NO. PLACAS AJV1521, NO. ECON. 74 ",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 75,
+            "marca": "CHEVROLET ",
+            "modelo": " 2007",
+            "ano": 2006,
+            "placas": "AM95718",
+            "serie": "3GBJC34R37M104466",
+            "descripcion": "CAMION REDILAS 3500, BLANCO, 8 CIL, STANDAR, PLACAS AM95718, NO. ECON. 75",
+            "depto": "COORDINACION DE MANTENIMIENTO DE OBRA CIVIL"
+          },
+          {
+            "numero": 77,
+            "marca": "NISSAN",
+            "modelo": "2004",
+            "ano": 2008,
+            "placas": "AM95711",
+            "serie": "3N6CD13S04K056293",
+            "descripcion": "PICK UP DOBLE CABINA MOTOR 2.4, GRIS ACERO, CUATRO PUERTAS, PLACAS AM95711 NO. ECON. 77",
+            "depto": "COORDINACION DE INFORMATICA"
+          },
+          {
+            "numero": 83,
+            "marca": "CHEVROLET",
+            "modelo": "2006",
+            "ano": 2008,
+            "placas": "AJV1527",
+            "serie": "8AG116CJ46R204446",
+            "descripcion": "GM TRACKER, 4X2 AUTOMATICA, COLOR BLANCO NEVADO, PLACAS AJV1527, NO. ECON. 83",
+            "depto": "COORDINACION DE INVERSION PUBLICA"
+          },
+          {
+            "numero": 84,
+            "marca": "FORD",
+            "modelo": "2001",
+            "ano": 2008,
+            "placas": "AM95682",
+            "serie": "3FTDF17261MA92209",
+            "descripcion": "PICK UP F-150, COLOR BLANCO, 2 PUERTAS, PLACAS AM95682, NO. ECON. 84",
+            "depto": "COORDINACION DE MANTENIMIENTO DE OBRA CIVIL"
+          },
+          {
+            "numero": 87,
+            "marca": "FORD",
+            "modelo": "2008",
+            "ano": 2008,
+            "placas": "AM95737",
+            "serie": "3FTGF17248MA30685",
+            "descripcion": "PICK UP F-150, V6, ESTANDAR, 6 CIL, BLANCO, A/C, PLACAS AM95737 NO. ECON. 87",
+            "depto": "COORDINACION DE MANTENIMIENTO MECANICO"
+          },
+          {
+            "numero": 88,
+            "marca": "FORD",
+            "modelo": "2008",
+            "ano": 2008,
+            "placas": "APO5355",
+            "serie": "3FTGF17258MA30551",
+            "descripcion": "PICK UP F-150, V6, ESTANDAR, 6 CIL, BLANCO, A/C, NO. PLACAS APO5355, NO. ECON. 88 (PENDIENTE BAJA)",
+            "depto": "TRAMITE BAJA"
+          },
+          {
+            "numero": 89,
+            "marca": "FORD",
+            "modelo": "2008",
+            "ano": 2008,
+            "placas": "AM95739",
+            "serie": "3FTGF17258MA30565",
+            "descripcion": "PICK UP F-150, V6, ESTANDAR, 6 CIL, BLANCO, A/C, PLACAS AM95739, NO. ECON. 89 (PENDIENTE BAJA)",
+            "depto": "TRAMITE BAJA"
+          },
+          {
+            "numero": 90,
+            "marca": "FORD",
+            "modelo": " 2008",
+            "ano": 2008,
+            "placas": "AM95735",
+            "serie": "3FTRF17218MA29003",
+            "descripcion": "PICK UP F-150, BLANCO OXFORD, TAPIZ TELA GRIS, STANDAR, MOTOR V-6, AIRE ACOND., PLACAS AM95735, NO. ECON. 90",
+            "depto": "COORDINACION DE MANTENIMIENTO MECANICO"
+          },
+          {
+            "numero": 91,
+            "marca": "FORD",
+            "modelo": "2008",
+            "ano": 2008,
+            "placas": "AM95736",
+            "serie": "3FTRF17218MA28997",
+            "descripcion": "PICK UP F-150, V6, ESTANDAR, 6 CIL, BLANCO, A/C, PLACAS AM95736, NO. ECON. 91 (PENDIENTE BAJA)",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 92,
+            "marca": "FORD",
+            "modelo": "2008",
+            "ano": 2008,
+            "placas": "AM95731",
+            "serie": "8AFDT50D786174108",
+            "descripcion": "PICK UP RANGER, BLANCO, TRANS. ESTANDAR, 4 CILINDROS,  PLACAS AM95731, NO. ECON. 92",
+            "depto": "COORDINACION DE PROTECCION CATODICA"
+          },
+          {
+            "numero": 93,
+            "marca": "FORD",
+            "modelo": "2008",
+            "ano": 2008,
+            "placas": "AM95727",
+            "serie": "8AFDT50D086161037",
+            "descripcion": "PICK UP RANGER, BLANCO, ESTANDAR, 4 CIL, PLACAS AM95727, NO. ECON. 93",
+            "depto": "COORDINACION DE MANTENIMIENTO ELECTRICO"
+          },
+          {
+            "numero": 94,
+            "marca": "FORD",
+            "modelo": "2008",
+            "ano": 2008,
+            "placas": "AM95725",
+            "serie": "8AFDT50D686170650",
+            "descripcion": "PICK UP RANGER, BLANCO, ESTANDAR, 4 CIL, PLACAS AM95725, NO. ECON. 94",
+            "depto": "COORDINACION DE OPERACION"
+          },
+          {
+            "numero": 95,
+            "marca": "FORD",
+            "modelo": "2008",
+            "ano": 2008,
+            "placas": "AN25129",
+            "serie": "8AFDT50D486170646",
+            "descripcion": "PICK UP RANGER, BLANCO, ESTANDAR, 4 CIL, PLACAS AN25129, NO. ECON. 95",
+            "depto": "COORDINACION DE MANTENIMIENTO ELECTRICO"
+          },
+          {
+            "numero": 96,
+            "marca": "FORD",
+            "modelo": "2008",
+            "ano": 2008,
+            "placas": "AM95742",
+            "serie": "3FEKF36L08MA33686",
+            "descripcion": "CAMION F-350, COLOR BLANCO, TAPICERIA DE TELA GRIS, MOTOR V-8, STANDAR, PLACAS AM95742, NO. ECON. 96",
+            "depto": "COORDINACION DE PROTECCION CATODICA"
+          },
+          {
+            "numero": 97,
+            "marca": "CHEVROLET",
+            "modelo": "2005",
+            "ano": 2008,
+            "placas": "AJV1528",
+            "serie": "8AG116CJ15R200353",
+            "descripcion": "GM TRACKER, COLOR PLATA, AUTOMATICA, 4 CIL, PLACAS AJV1528, NO. ECON. 97",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 107,
+            "marca": "FORD",
+            "modelo": "2008",
+            "ano": 2008,
+            "placas": "AM95730",
+            "serie": "8AFDT50D486176513",
+            "descripcion": "PICK UP RANGER, BLANCO, ESTANDAR, 4 CIL, PLACAS AM95730, NO. ECON. 107",
+            "depto": "COORDINACION DE TECNOLOGIAS DEL AGUA"
+          },
+          {
+            "numero": 109,
+            "marca": "CHEVROLET",
+            "modelo": "2006",
+            "ano": 2009,
+            "placas": "AJV1526",
+            "serie": "8AG116CJ86R204207",
+            "descripcion": "CHEVROLET TRACKER 4X2, BLANCO, 4 CIL, AUTOMATICA, PLACAS AJV1526, NO. ECON. 109",
+            "depto": "DIRECCION ADMINISTRATIVA"
+          },
+          {
+            "numero": 110,
+            "marca": "CHEVROLET",
+            "modelo": "2009",
+            "ano": 2009,
+            "placas": "AJV1524",
+            "serie": "3GNCL53729S615818",
+            "descripcion": "CAMIONETA CHEVROLET CAPTIVA SPORT, BLANCO, 3.6L, V6, AUTOMATICA  A/C, PLACAS AJV1524, NO. ECON. 110. (TIJUANA)",
+            "depto": "SUBDIRECCION GENERAL DE EFICIENCIA COMERCIAL Y COBRO"
+          },
+          {
+            "numero": 111,
+            "marca": "FORD",
+            "modelo": "2009",
+            "ano": 2009,
+            "placas": "AM95728",
+            "serie": "8AFDT50D696231139",
+            "descripcion": "PICK UP RANGER, BLANCO, ESTANDAR, 4 CIL, PLACAS AM95728, NO. ECON. 111",
+            "depto": "COORDINACION DE MANTENIMIENTO ELECTRICO"
+          },
+          {
+            "numero": 112,
+            "marca": "FORD",
+            "modelo": "2009",
+            "ano": 2009,
+            "placas": "AM95733",
+            "serie": "8AFDT50D396231132",
+            "descripcion": "PICK UP RANGER, BLANCO, ESTANDAR, 4 CIL, PLACAS AM95733, NO. ECON. 112 (LO TIENE OPERACION)",
+            "depto": "TRAMITE BAJA"
+          },
+          {
+            "numero": 113,
+            "marca": "FORD",
+            "modelo": "2009",
+            "ano": 2009,
+            "placas": "AM95724",
+            "serie": "8AFDT50D596231116",
+            "descripcion": "PICK UP RANGER, BLANCO, ESTANDAR, 4 CIL, PLACAS AM95724, NO. ECON. 113",
+            "depto": "COORDINACION DE MANTENIMIENTO ELECTRICO"
+          },
+          {
+            "numero": 114,
+            "marca": "FORD",
+            "modelo": "2009",
+            "ano": 2009,
+            "placas": "AM95734",
+            "serie": "8AFDT50D696231125",
+            "descripcion": "PICK UP RANGER, BLANCO, ESTANDAR, 4 CIL, PLACAS AM95734, NO. ECON. 114",
+            "depto": "COORDINACION DE OPERACION"
+          },
+          {
+            "numero": 115,
+            "marca": "FORD",
+            "modelo": "2009",
+            "ano": 2009,
+            "placas": "AM95726",
+            "serie": "8AFDT50D996231829",
+            "descripcion": "PICK UP RANGER, BLANCO, ESTANDAR, 4 CIL, PLACAS AM95726, NO. ECON. 115 (PENDIENTE BAJA)",
+            "depto": "TRAMITE BAJA"
+          },
+          {
+            "numero": 118,
+            "marca": "FORD",
+            "modelo": "2009",
+            "ano": 2009,
+            "placas": "AJV1544",
+            "serie": "WFOLT27H691117906",
+            "descripcion": "FOCUS EUROPE, BLANCO, 6 CIL, AUTOMATICO, PLACAS AJV1544, NO. ECON. 118 (ANAHUAC)",
+            "depto": "DIRECCION ADMINISTRATIVA"
+          },
+          {
+            "numero": 119,
+            "marca": "FORD",
+            "modelo": "2009",
+            "ano": 2009,
+            "placas": "AJV1543",
+            "serie": "WF0LT27H691117323",
+            "descripcion": "FOCUS EUROPE, BLANCO, 6 CIL, AUTOMATICO, PLACAS AJV1543, NO. ECON. 119",
+            "depto": "DIRECCION JURIDICA Y DE NORMATIVIDAD"
+          },
+          {
+            "numero": 122,
+            "marca": "INTERNATIONAL",
+            "modelo": "2009",
+            "ano": 2009,
+            "placas": "AM95722",
+            "serie": "3HAMSADR09L100217",
+            "descripcion": "CAMION DE VOLTEO, BLANCO, DIESEL 8 CIL, STANDAR, PLACAS AM95722, NO. ECON. 122",
+            "depto": "COORDINACION DE MANTENIMIENTO DE OBRA CIVIL"
+          },
+          {
+            "numero": 127,
+            "marca": "NISSAN",
+            "modelo": "2003",
+            "ano": 2010,
+            "placas": "AJV1458",
+            "serie": "5N1ED28T43C675093",
+            "descripcion": "XTERRA SE 4X2, MOTOR 3.3 LITROS, BLANCO, PLACAS AJV1458, NO. ECON. 127 ",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 129,
+            "marca": "FORD",
+            "modelo": "2006",
+            "ano": 2010,
+            "placas": "ANO1179",
+            "serie": "8AFDT50D366485015",
+            "descripcion": "PICK UP RANGER CREW CAB XL, 4 CIL, PLATA, PLACAS ANO1179, NO. ECON. 129",
+            "depto": "COORDINACION DE MANTENIMIENTO DE OBRA CIVIL"
+          },
+          {
+            "numero": 134,
+            "marca": "FORD",
+            "modelo": "2010",
+            "ano": 2010,
+            "placas": "AN35829",
+            "serie": "1FDEF3G52AEA94860",
+            "descripcion": "CAMION CHASIS F-350, BLANCO, 8 CIL, STANDAR, PLACAS AN35829, NO. ECON. 134",
+            "depto": "COORDINACION DE MANTENIMIENTO DE OBRA CIVIL"
+          },
+          {
+            "numero": 136,
+            "marca": "NISSAN",
+            "modelo": "2012",
+            "ano": 2012,
+            "placas": "AN44877",
+            "serie": "3N6DD23T8CK024208",
+            "descripcion": "PICK UP FRONTIER, BLANCO, 4 CIL, STANDAR, A/C., PLACAS AN44877, NO. ECON. 136",
+            "depto": "COORDINACION DE MANTENIMIENTO MECANICO"
+          },
+          {
+            "numero": 137,
+            "marca": "NISSAN",
+            "modelo": "2012",
+            "ano": 2012,
+            "placas": "AN44876",
+            "serie": "3N6DD23T7CK006136",
+            "descripcion": "PICK UP FRONTIER, BLANCO, 4 CIL, STANDAR, A/C., PLACAS AN44876, NO. ECON. 137",
+            "depto": "COORDINACION DE OPERACION"
+          },
+          {
+            "numero": 138,
+            "marca": "NISSAN",
+            "modelo": "2012",
+            "ano": 2012,
+            "placas": "AN44878",
+            "serie": "3N6DD23T1CK012904",
+            "descripcion": "PPICK UP FRONTIER, BLANCO, 4 CIL, STANDAR, A/C., PLACAS AN44878, NO. ECON. 138",
+            "depto": "COORDINACION DE MANTENIMIENTO DE OBRA CIVIL"
+          },
+          {
+            "numero": 139,
+            "marca": "NISSAN",
+            "modelo": "2012",
+            "ano": 2012,
+            "placas": "AKH2950",
+            "serie": "3N1EB31S4CK344402",
+            "descripcion": "TSURU SEDAN, 4 CIL, 4 PUERTAS, COLOR BLANCO, PLACAS AKH2950, NO. ECON. 139",
+            "depto": "COORDINACION DE RECURSOS MATERIALES"
+          },
+          {
+            "numero": 141,
+            "marca": "GMC",
+            "modelo": "2012",
+            "ano": 2019,
+            "placas": "A42NWX3",
+            "serie": "2GKFLXE54C6184633",
+            "descripcion": "CAMIONETA TERRAIN, 6 CIL, BLANCO, PLACAS A42NWX3, NO. ECON. 141",
+            "depto": "DIRECCION ADMINISTRATIVA"
+          }
+    ]

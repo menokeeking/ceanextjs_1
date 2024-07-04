@@ -20,3 +20,19 @@ export async function GET() {
       }
 }
 
+export async function POST() {
+  return NextResponse.json({
+    data: "Falta logica de agregar empleado"
+});
+}
+
+export async function PUT(request: Request) {
+  const body = request
+
+  //console.log("Lo que llega del en el API PUT", body)
+
+  return NextResponse.json({
+    data: body.text()
+});
+}
+

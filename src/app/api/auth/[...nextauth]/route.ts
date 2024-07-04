@@ -26,6 +26,8 @@ export const authOptions: NextAuthOptions = {
                             name: data.user,
                             depto: data.userData.deptoDescripcion,
                             fullname: data.userData.nombreCompleto,
+                            empkey: data.id,
+                            rol: data.userData.viaticosNivel,
                         }
                     }
 
@@ -46,6 +48,7 @@ export const authOptions: NextAuthOptions = {
     },
     session: {
         strategy: "jwt",
+        maxAge: 2 * 60 * 60
       },
 
     callbacks: {
