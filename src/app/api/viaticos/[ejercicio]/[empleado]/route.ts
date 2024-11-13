@@ -12,13 +12,16 @@ interface Segments {
 export async function GET(request: Request, { params }: Segments) {
     try {
 
+        // const { data } = await axios.get(
+        //     `http://200.56.97.5:7281/api-viaticos/Viaticos/lista-viaticos-empleado/${params.ejercicio}/${params.empleado}`
+        // );
         const { data } = await axios.get(
-            `http://200.56.97.5:7281/api-viaticos/Viaticos/lista-viaticos-empleado/${params.ejercicio}/${params.empleado}`
+            `http://200.56.97.5:7281/api/Viatico/ListaViaticosPorEmpleado/${params.ejercicio}/${params.empleado}`
         );
         //console.log(data)    
         return NextResponse.json({
 
-            data: data
+            data: data.data
             
         });
     } catch (error) {

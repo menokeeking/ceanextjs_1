@@ -1,14 +1,19 @@
 
 export interface TablaEmpleados {
-  idEmpleado: number,
+  activo: string,
+  empleado: number,
   nombre: string,
-  paterno: string,
   materno: string,
-  nivel: number,
-  depto: number,
-  obra: number,
-  deptoPpto: number,
+  paterno: string,
+  idPue: number,
+  descripcionPuesto: string,
+  deptoUe: number,
+  descripcionDepto:string,
   deptoComi: number,
+  nombreCompleto: string,
   municipio: number,
-  activo: string
+  oficina: number,
+  nivel: number,
+  lugarTrab: number,
+  correo: string
 }

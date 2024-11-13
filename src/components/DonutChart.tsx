@@ -21,7 +21,8 @@ const DonutChart: React.FC<DonutChartProps> = ({ data, title }) => {
         options={{
           title,
           pieHole: 0.4, // Tamaño del agujero en la gráfica (0.4 = donut chart)
-          pieSliceText: 'value', // Muestra los valores en las porciones
+          pieSliceText: 'value', // Muestra los valores en las porciones,
+          //is3D: true,
         }}
       />
     </div>

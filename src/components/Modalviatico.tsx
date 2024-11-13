@@ -8,6 +8,7 @@ import { DatePickerField } from '@/components/Datepicker2';
 import { Ciudad } from '@/interfaces/Ciudades';
 import calcularDiferenciaFechas from '@/funciones/difdias';
 import obtenerfecha from '@/funciones/diadehoy';
+import Select from 'react-select';
 
 interface Props {
     isVisible: boolean;
@@ -40,6 +41,7 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal 
     const onSubmit = handleSubmit((data) => {
 
         const viatico = {
+            id: 0,
             oficina: +(detviatico.noViatico.substring(2, 1)),
             ejercicio: +(20 + detviatico.noViatico.substring(detviatico.noViatico.search('/') + 1, detviatico.noViatico.length)),
             noViat: +(detviatico.noViatico.substring(3, detviatico.noViatico.search('/'))),
@@ -139,6 +141,7 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal 
                                                         onChange={(e) => onChange(+(e.target.value))}
                                                         id="ciudades"
                                                         value={value}
+                                                        
                                                         className="  bg-gray-50 border border-gray-300 text-gray-900
                                                                     text-sm lg:text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 
                                                                     block lg:w-48 w-full p-1.5"
@@ -148,6 +151,7 @@ const Modalviatico = ({ isVisible, onClose, detviatico, ciudades, modificaModal 
                                                                 {r.idCiudad} - {r.ciudad}
                                                             </option>
                                                         ))}
+                                                        
 
                                                     </select>
                                                 )}

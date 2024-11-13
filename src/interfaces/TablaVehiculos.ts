@@ -20,7 +20,7 @@ export interface TablaVehiculos {
     serie: string,
     descripcion: string,
     fechaAdq: string,
-    bm_estatus: number,
+    bmEstatus: number,
     importe: number,
     resguardo: number,
     depto: string,

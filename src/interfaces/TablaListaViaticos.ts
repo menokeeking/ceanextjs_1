@@ -3,7 +3,7 @@ export interface TablaListaViaticos{
     fecha: string;
     origen: string,
     destino: string,
-    movito: string,
+    motivo: string,
     salida: string,
     regreso: string,
     estatus: string,

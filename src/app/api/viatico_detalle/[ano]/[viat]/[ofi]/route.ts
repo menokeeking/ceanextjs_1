@@ -15,8 +15,8 @@ export async function GET(request: Request, { params }: Segments) {
 
     try {
         const { data } = await axios.get(
-            `http://200.56.97.5:7281/api-viaticos/Viaticos/DetalleViatico/${params.ano}/${params.viat}/${params.ofi}`
-            //`http://localhost:5151/viaticos/${params.ano}/${params.viat}/${params.ofi}`
+            //`http://200.56.97.5:7281/api-viaticos/Viaticos/DetalleViatico/${params.ano}/${params.viat}/${params.ofi}`
+            `http://localhost:5151/viaticos/${params.ano}/${params.viat}/${params.ofi}`
 
         ); //DetalleViatico/2024/14/2
         //console.log(data)    

@@ -8,7 +8,7 @@ export const creapdf_emp = ( empleados : TablaEmpleados) => {
     image1.src = '/assets/logo2.png';
 
     const userimg = new Image();
-    userimg.src = `/images/p${empleados.idEmpleado}.jpg`;
+    userimg.src = `/images/p${empleados.empleado}.jpg`;
 
     const doc = new jsPDF();
     // Encabezado
@@ -29,7 +29,7 @@ export const creapdf_emp = ( empleados : TablaEmpleados) => {
     doc.setDrawColor(20, 20, 20);
     //doc.roundedRect(5, 40, 200, 10, 3, 3, "FD");
     doc.addImage(userimg, "JPEG", 20, 40, 15, 17);
-    doc.text(`Detalle del Empleado: ${empleados.idEmpleado}`, 105, 45,{align: "center"} );
+    doc.text(`Detalle del Empleado: ${empleados.empleado}`, 105, 45,{align: "center"} );
     //doc.text("Detalle del Empleado:", 105, 47,{align: "center"} );
     doc.setFontSize(8);
     doc.text("Nombre: ", 20, 70);
@@ -43,11 +43,11 @@ export const creapdf_emp = ( empleados : TablaEmpleados) => {
     doc.text("Nivel: ", 20, 97);
     doc.text(`${empleados.nivel}`, 30, 97);
     doc.text("Depto: ", 40, 97);
-    doc.text(`${empleados.depto}`, 50, 97);
+    doc.text(`${empleados.deptoUe}`, 50, 97);
     doc.text("Obra: ", 65, 97);
-    doc.text(`${empleados.obra}`, 75, 97);
+    doc.text(`${empleados.lugarTrab}`, 75, 97);
     doc.text("Deptoppto: ", 90, 97);
-    doc.text(`${empleados.deptoPpto}`, 105, 97);
+    doc.text(`${empleados.correo}`, 105, 97);
     doc.text("Deptocomi: ", 120, 97);
     doc.text(`${empleados.deptoComi}`, 135, 97);
 

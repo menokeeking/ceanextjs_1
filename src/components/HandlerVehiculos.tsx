@@ -68,7 +68,7 @@ function HandlerVehiculos() {
         serie: '*',
         descripcion: '*',
         fechaAdq: '01/01/1900',
-        bm_estatus: 0,
+        bmEstatus: 0,
         importe: 0,
         resguardo: 0,
         depto: '*',

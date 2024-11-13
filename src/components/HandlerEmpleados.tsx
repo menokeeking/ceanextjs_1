@@ -9,7 +9,6 @@ import { IoEye, IoPencilSharp, IoReader } from "react-icons/io5";
 import styled from "styled-components";
 import { XCircleIcon, UserGroupIcon, ExclamationCircleIcon } from "@heroicons/react/20/solid";
 import { Progress } from "./Progress";
-import ModalSetejercicio from "./ModalSetejercicio";
 import Modaltest from "./Modaltest";
 import { creapdf_emp } from "@/components/creapdf_emp"
 
@@ -33,7 +32,7 @@ function HandlerEmpleados() {
 
     const router = useRouter()
 
-    const inicio = useCounterStore((state) => state.alinicio)
+    //const inicio = useCounterStore((state) => state.alinicio)
     const [datos, setDatos] = useState([] as TablaEmpleados[])
     const [filterText, setFilterText] = useState('');
     const [showModal, setShowModal] = useState(false);
@@ -41,26 +40,31 @@ function HandlerEmpleados() {
     const [loading, setLoading] = useState(false)
     const [empleados, setempleados] = useState<TablaEmpleados>({} as TablaEmpleados);
     const actnombredin = useCounterStore(state => state.actnombredin)
-    const [isOpen, setIsOpen] = useState(false);
-    const closeModal = () => { setIsOpen(false) };
-    const openModal = () => { setIsOpen(true) };
+
 
     const filteredItems = datos.filter(
-        item => item.nombre && item.nombre.toLowerCase().includes(filterText.toLowerCase()) || item.paterno && item.paterno.toLowerCase().includes(filterText.toLowerCase()) || item.idEmpleado && item.idEmpleado.toString().includes(filterText.toLowerCase()),
+        item => item.nombre && item.nombre.toLowerCase().includes(filterText.toLowerCase()) || item.paterno && item.paterno.toLowerCase().includes(filterText.toLowerCase()) || item.empleado && item.empleado.toString().includes(filterText.toLowerCase()),
+        //item => item.nombre && item.nombre.toLowerCase().includes(filterText.toLowerCase()) 
     );
+    
 
     const empleadosvoid: TablaEmpleados = {
-        idEmpleado: 0,
+        activo: '',
+        empleado: 0,
         nombre: '',
-        paterno: '',
         materno: '',
-        nivel: 0,
-        depto: 0,
-        obra: 0,
-        deptoPpto: 0,
+        paterno: '',
+        idPue: 0,
+        descripcionPuesto: '',
+        deptoUe: 0,
+        descripcionDepto:'',
         deptoComi: 0,
+        nombreCompleto: '',
         municipio: 0,
-        activo: ''
+        oficina: 0,
+        nivel: 0,
+        lugarTrab: 0,
+        correo: '',
     }
 
     const RecibirdeModal = async (valoremp: TablaEmpleados, isnew: boolean) => {
@@ -90,15 +94,15 @@ function HandlerEmpleados() {
     }
 
     useEffect(() => {
-        if (inicio) {
-            openModal()
-        }
+        
         setLoading(true)
         setDatos([]);
         const getData = async () => {
             const { data } = await axios.get('/api/empleados');
             setLoading(false)
+            //console.log("Desdeaxios", data)
             setDatos(data.data)
+            
         }
         getData();
     }, [])
@@ -155,15 +159,15 @@ function HandlerEmpleados() {
     };
 
     const columns = [
-        { name: "NO. EMP.", selector: (row: any) => row.idEmpleado, sortable: true, right: true, maxWidth: '80px', },
+        { name: "NO. EMP.", selector: (row: any) => row.empleado, sortable: true, right: true, maxWidth: '80px', },
         { name: "NOMBRE", selector: (row: any) => row.nombre, sortable: true, },
         { name: "PATERNO", selector: (row: any) => row.paterno, sortable: true, hide: Media.SM },
         { name: "MATERNO", selector: (row: any) => row.materno, sortable: true, hide: Media.SM },
         { name: "NIV", selector: (row: any) => row.nivel, sortable: true, hide: Media.MD, right: true, maxWidth: '80px', },
-        { name: "DEPTO", selector: (row: any) => row.depto, sortable: true, hide: Media.MD, right: true, maxWidth: '80px', },
-        { name: "OBRA", selector: (row: any) => row.obra, hide: Media.MD, right: true, maxWidth: '80px', },
-        { name: "DPPTO", selector: (row: any) => row.deptoPpto, hide: Media.MD, right: true, maxWidth: '80px', },
-        { name: "DCOMI", selector: (row: any) => row.deptoComi, hide: Media.MD, right: true, maxWidth: '80px', },
+        { name: "DEPTO", selector: (row: any) => row.deptoUe, sortable: true, hide: Media.MD, right: true, maxWidth: '80px', },
+        { name: "D.COMI", selector: (row: any) => row.deptoComi, hide: Media.MD, right: true, maxWidth: '80px', },
+        { name: "OFICINA", selector: (row: any) => row.oficina, hide: Media.MD, right: true, maxWidth: '80px', },
+        { name: "LUGARTRAB", selector: (row: any) => row.lugarTrab, hide: Media.MD, right: true, maxWidth: '80px', },
         {
             name: 'ACCIONES', button: true, selector: (row: any) => row.id, cell: (row: any) =>
                 <>  <div className="">
@@ -174,24 +178,24 @@ function HandlerEmpleados() {
                             setShowModal(true)
                             setempleados(row)
                         }}>
-                        <IoEye className="w-5 h-5 text-red-900 hover:text-primary-700 transition-colors" />
+                        <IoEye className="w-5 h-5 text-red-900 hover:text-primary-700 hover:w-6 hover:h-6 transition-colors" />
                     </button>
 
                     <button title='Editar' type="button" onClick={() => {
                         creapdf_emp(row)
                     }}>
 
-                        <IoPencilSharp className="ml-2 w-5 h-5 text-red-900 hover:text-primary-700 transition-colors" />
+                        <IoPencilSharp className="ml-2 w-5 h-5 text-red-900 hover:text-primary-700 hover:w-6 hover:h-6 transition-colors" />
                     </button>
 
                     <button title='Detalle Viaticos'
                         type="button"
                         onClick={() => {
                             actnombredin(row.nombre + ' ' + row.paterno + ' ' + row.materno)
-                            router.push(`/dashboard/Detallexemp?id=${row.idEmpleado}`)
+                            router.push(`/dashboard/Detallexemp?id=${row.empleado}`)
                         }}
                     >
-                        <IoReader className="ml-2 w-5 h-5 text-red-900 hover:text-primary-700 transition-colors" />
+                        <IoReader className="ml-2 w-5 h-5 text-red-900 hover:text-primary-700 hover:w-6 hover:h-6 transition-colors" />
                     </button>
                 </div>
                 </>,
@@ -202,9 +206,7 @@ function HandlerEmpleados() {
 
     return (
         <>
-            <div className="">
-                <ModalSetejercicio isVisible={isOpen} CerrarModal={closeModal} />
-            </div>
+            
             <div className="">
                 {/* <Modaltest showModal={showModal} /> */}
                 <Modaltest isVisible={showModal} onClose={() => setShowModal(false)} empleados={empleados} isNew={isNew} recibirModal={RecibirdeModal} />
@@ -225,6 +227,7 @@ function HandlerEmpleados() {
                     //paginationRowsPerPageOptions={[5, 10, 15, 20]}
                     paginationComponentOptions={paginacionOpciones}
                     data={filteredItems}
+                    //data={datos}
                     subHeader
                     subHeaderComponent={datos.length > 0 && <>
                         <div className="lg:flex flex-row md:flex items-center justify-between w-full mb-4">
@@ -272,9 +275,9 @@ function HandlerEmpleados() {
                     }
                     highlightOnHover
                     persistTableHead
-                    customStyles={customStyles}
+                    //customStyles={customStyles}
                     fixedHeader = {true}
-                    fixedHeaderScrollHeight="150px"
+                    fixedHeaderScrollHeight="300px"
                 />
             </div>
 

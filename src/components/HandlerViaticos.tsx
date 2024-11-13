@@ -17,19 +17,20 @@ function HandlerViaticos({ params }: { params: { noemp: string } }) {
 
     const modificaModal = async (valorviatico: TablaViaticos) => {
         const url = '/api/viaticos'
+        console.log(valorviatico)
         const putData = async () => {
             const config = { headers: { 'Content-Type': 'application/json' } };
             try {
                 const data = await axios.put(url, valorviatico, config);
-                console.log(data)
+                console.log("Resultado de Modificar Modal",data)
             } catch (error) {
-                console.error(error)
+                console.error("Un error del axios",error)
             }
         }
         putData();
         setrealoadData((prev) => !prev)
         setShowModal(false)
-        alert("registro actualizado")
+        //alert("registro actualizado")
         //console.log("Lo que se va a modificar", valorviatico)
     }
 

@@ -1,17 +1,34 @@
 
 "use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import DonutChart from '@/components/DonutChart';
 import BarChart from "@/components/BarChart";
+import ModalSetejercicio from "@/components/ModalSetejercicio";
+import { useCounterStore } from "@/store/counterStore";
+import { TiposEmpleado } from "@/interfaces/TiposEmpleado";
+import { Veh_xmodelo } from "@/interfaces/Veh_xmodelo";
+import axios from "axios";
+import DonutChartapi from "@/components/DonutChartapi";
+import BarChartapi from "@/components/BarChartapi";
 
 
 function Principal() {
 
-  const chartData: Array<[string, number]> = [
-    ["Confianza", 73],
-    ["Base", 109],
-    ["Contrato", 30]
-  ]
+  const inicio = useCounterStore((state) => state.alinicio)
+  const [isOpen, setIsOpen] = useState(false);
+  const [totEmp, settotEmp] = useState(0);
+  const [totVeh, settotVeh] = useState(0);
+  const [empDatos, setempDatos] = useState([] as TiposEmpleado[]);
+  const [vehDatos, setvehDatos] = useState([] as Veh_xmodelo[]);
+  const closeModal = () => { setIsOpen(false) };
+  const openModal = () => { setIsOpen(true) };
+
+  // const chartData: Array<[string, number]> = [
+  //   ["Confianza", 73],
+  //   ["Base", 109],
+  //   ["Contrato", 30]
+  // ]
 
   const chartData2: Array<[string, number]> = [
     ["1994",	1],
@@ -62,9 +79,53 @@ function Principal() {
 //   miArray.push([nombres[i], cantidades[i]]);
 // }
 
+useEffect(() => {
+  if (inicio) {
+      openModal()
+  }
+
+  const getData = async () => {
+    try {
+        const { data } = await axios.get('/api/empleados_tipo'); // Cambia la URL de la API
+        
+        settotEmp(data.data.e_total)
+        const tipos: TiposEmpleado[] = [
+          { tipo: 'Confianza', amount: data.data.e_c},
+          { tipo: 'Base', amount: data.data.e_b},
+          { tipo: 'Contrato', amount: data.data.e_t},
+        ];
+        setempDatos(tipos)
+        //console.log(data.data.e_total)
+        
+    } catch (error) {
+        console.error('Error al obtener los datos:', error);
+    }
+  }
+  getData();
+
+  const getData2 = async () => {
+    try {
+        const { data } = await axios.get('/api/vehiculos_xmodelo'); // Cambia la URL de la API
+        const totalCantidad = data.data.reduce((acc: number, item: { cantidad: number; }) => acc + item.cantidad, 0);
+        //console.log(data)
+        settotVeh(totalCantidad)
+        setvehDatos(data.data)
+    
+    } catch (error) {
+        console.error('Error al obtener los datos:', error);
+    }
+  }
+  getData2();
+
+
+  
+}, [])
+
   return (
     <>
-
+      <div className="">
+                <ModalSetejercicio isVisible={isOpen} CerrarModal={closeModal} />
+            </div>
       <div className="flex">
 
         <div className="p-4 m-2 lg:w-2/6 bg-gray-100 rounded-xl flex flex-col justify-between gap-4 drop-shadow-md">
@@ -76,12 +137,10 @@ function Principal() {
                 </Link>
                 <p className="text-gray-500">Total de Empleados </p>
               </div>
-              <span className="bg-primary-800 text-gray-100 text-2xl font-bold p-2 rounded-xl w-18">
-                220
-              </span>
+              <span className="bg-primary-800 text-gray-100 text-2xl font-bold p-2 rounded-xl w-18">  {totEmp} </span>
             </div>
             <div className="">
-              <DonutChart title="Tipos de Empleado" data={chartData} />
+              <DonutChartapi empData={empDatos} titulo="Tipos de Empleados CEA"  />
             </div>
           </div>
         </div>
@@ -92,14 +151,13 @@ function Principal() {
                 <Link href="/dashboard/vehiculos">
                   <h3 className="font-bold hover:text-gray-600">Vehiculos</h3>
                 </Link>
-                <p className="text-gray-500">Total de Empleados </p>
+                <p className="text-gray-500">Total de Unidades </p>
               </div>
-              <span className="bg-primary-800 text-gray-100 text-2xl font-bold p-2 rounded-xl w-18">
-                70
-              </span>
+              <span className="bg-primary-800 text-gray-100 text-2xl font-bold p-2 rounded-xl w-18"> {totVeh}</span>
             </div>
             <div className="">
-              <BarChart data={chartData2} title="Distribución Año de la Unidad" categoria={"CANTIDAD"} valor={"AÑOS"} />
+              {/* <BarChart data={chartData2} title="Distribución Año de la Unidad" categoria={"CANTIDAD DE UNIDADES"} valor={"MODELO"} /> */}
+              <BarChartapi data={vehDatos} title="Distribución Año de la Unidad" categoria={"CANTIDAD DE UNIDADES"} valor={"MODELO"} />
             </div>
           </div>
         </div>

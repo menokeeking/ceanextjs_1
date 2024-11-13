@@ -1,4 +1,5 @@
 export interface TablaViaticos {
+    id: number,
     oficina: number,
     ejercicio: number,
     noViat: number,

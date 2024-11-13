@@ -67,7 +67,7 @@ function Tablasdeviaticos({ params }:
             const { data } = await axios.get(`/api/viaticos/${count}/${params.noemp}`);
             setLoading(false)
             setDatos(data.data)
-            console.log(data.data)
+            //console.log(data.data)
         }
         getData();
 
@@ -116,11 +116,11 @@ function Tablasdeviaticos({ params }:
         {
             name: "Motivo",
             //selector: (row: any) => row.movito,
-            cell: (row: any) => <div style={{ fontSize: '11px' }}>{row.movito}</div>,
+            cell: (row: any) => <div style={{ fontSize: '11px' }}>{row.motivo}</div>,
             sortable: true,
             wrap: true,
             // maxWidth: '300px',
-            format: (row: any) => `${row.movito.slice(0, 200)}...`,
+            format: (row: any) => `${row.motivo.slice(0, 200)}...`,
             hide: Media.SM
         },
         {
@@ -231,7 +231,7 @@ function Tablasdeviaticos({ params }:
                         <div className='px-4 flex items-center justify-between cursor-pointer hover:text-bold'>
                             <TbArrowBackUp />
                             <p className='py-6 text-md text-gray-600'>
-                                <a onClick={() => router.push(`/dashboard/principal`)}> Sin información </a>
+                                <a onClick={() => router.push(`/dashboard/empleados`)}> Sin información </a>
                             </p>
                         </div>
                     </>}
